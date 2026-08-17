@@ -293,6 +293,59 @@ a:hover {
   display: inline-block;
 }
 
+/* ===== Skills ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  display: flex;
+  gap: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  transition: all 0.2s ease;
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.skill-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.skill-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.skill-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.skill-en {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.skill-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
+}
+
+.skill-tags {
+  display: flex;
+}
+
 /* ===== 侧边栏 ===== */
 .sidebar {
   font-size: 0.9rem;

@@ -113,6 +113,27 @@ function renderProjects() {
 }
 renderProjects();
 
+// ---- Skills ----
+function renderSkills() {
+  const grid = document.getElementById("skills-grid");
+  const skills = window.SKILLS || [];
+  if (!grid || !Array.isArray(skills)) return;
+  grid.innerHTML = skills
+    .map(
+      (s) => `
+      <a class="skill-card" href="${escapeHtml(s.repo)}" target="_blank" rel="noopener">
+        <div class="skill-icon">${escapeHtml(s.icon)}</div>
+        <div class="skill-info">
+          <div class="skill-name">${escapeHtml(s.name)} <span class="skill-en">${escapeHtml(s.en)}</span></div>
+          <div class="skill-desc">${escapeHtml(s.desc)}</div>
+          <div class="skill-tags"><span class="tag">${escapeHtml(s.type)}</span></div>
+        </div>
+      </a>`
+    )
+    .join("");
+}
+renderSkills();
+
 // ---- 近期文章（侧边栏）----
 function renderRecent() {
   const ul = document.getElementById("recent-posts");
