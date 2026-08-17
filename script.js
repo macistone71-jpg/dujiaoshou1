@@ -2,6 +2,8 @@
 //  网站逻辑 —— 风格参考 rui.juzi.bot，数据来自 config.js
 // ============================================================
 const cfg = window.SITE_CONFIG || {};
+const POSTS = window.POSTS || [];
+const PROJECTS = window.PROJECTS || [];
 
 function escapeHtml(str) {
   return String(str ?? "")
@@ -66,8 +68,8 @@ renderHighlights();
 // ---- 文章列表 ----
 function renderPosts() {
   const list = document.getElementById("posts-list");
-  if (!list || !Array.isArray(cfg.posts)) return;
-  list.innerHTML = cfg.posts
+  if (!list || !Array.isArray(POSTS)) return;
+  list.innerHTML = POSTS
     .map(
       (p, i) => `
       <article class="post-item" data-search="${escapeHtml((p.title + " " + p.excerpt).toLowerCase())}">
@@ -86,8 +88,8 @@ renderPosts();
 // ---- 项目 ----
 function renderProjects() {
   const grid = document.getElementById("projects-grid");
-  if (!grid || !Array.isArray(cfg.projects)) return;
-  grid.innerHTML = cfg.projects
+  if (!grid || !Array.isArray(PROJECTS)) return;
+  grid.innerHTML = PROJECTS
     .map((p, i) => {
       const isExternal = /^https?:\/\//i.test(p.link || "");
       const linkHtml = p.link
@@ -112,8 +114,8 @@ renderProjects();
 // ---- 近期文章（侧边栏）----
 function renderRecent() {
   const ul = document.getElementById("recent-posts");
-  if (!ul || !Array.isArray(cfg.posts)) return;
-  ul.innerHTML = cfg.posts
+  if (!ul || !Array.isArray(POSTS)) return;
+  ul.innerHTML = POSTS
     .slice(0, 6)
     .map(
       (p, i) => `<li><a href="#" data-post="${i}">${escapeHtml(p.title)}</a></li>`
@@ -204,7 +206,7 @@ function closeModal() {
 }
 
 function openPost(i) {
-  const p = cfg.posts[i];
+  const p = POSTS[i];
   if (!p) return;
   openModal(`
     <div class="article-head">
@@ -216,7 +218,7 @@ function openPost(i) {
 }
 
 function openProject(i) {
-  const p = cfg.projects[i];
+  const p = PROJECTS[i];
   if (!p) return;
   const linkHtml = p.link
     ? `<a class="article-cta" href="${escapeHtml(p.link)}" target="_blank" rel="noopener">查看仓库 →</a>`
