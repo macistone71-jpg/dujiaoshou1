@@ -1,10 +1,8 @@
 // ============================================================
-//  网站逻辑 —— 通用模板
-//  读取 config.js 中的 SITE_CONFIG 自动渲染页面，无需改动本文件。
+//  网站逻辑 —— 风格参考 rui.juzi.bot，数据来自 config.js
 // ============================================================
 const cfg = window.SITE_CONFIG || {};
 
-// 简单的 HTML 转义，防止内容中的特殊字符破坏结构
 function escapeHtml(str) {
   return String(str ?? "")
     .replace(/&/g, "&amp;")
@@ -14,63 +12,75 @@ function escapeHtml(str) {
     .replace(/'/g, "&#39;");
 }
 
-// 按 id 填充文本
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value ?? "";
 }
 
 // ---- 基础信息 ----
-document.title = cfg.siteTitle || "我的个人网站";
-setText("logo", cfg.logo);
-setText("hero-greeting", cfg.greeting);
-setText("hero-name", cfg.name);
-setText("hero-role", cfg.role);
-setText("hero-desc", cfg.intro);
-setText("about-story", cfg.about?.story);
-setText("about-philosophy", cfg.about?.philosophy);
-setText("about-hobby", cfg.about?.hobby);
-setText("footer-name", cfg.siteTitle || cfg.name);
+document.title = `${cfg.name || "个人网站"} · ${cfg.slogan || ""}`.trim();
+setText("site-name", cfg.name);
+setText("site-slogan", cfg.slogan);
+setText("sidebar-name", cfg.name);
+setText("footer-name", cfg.name);
+setText("footer-slogan", cfg.slogan);
 
-// ---- 头像（支持 emoji 或图片地址）----
-const avatarEl = document.getElementById("hero-avatar");
+// ---- 头像（文字 / emoji / 图片）----
+const avatarEl = document.getElementById("sidebar-avatar");
 if (avatarEl) {
-  const avatar = cfg.avatar || "👋";
+  const avatar = cfg.avatar || cfg.name?.slice(0, 1) || "何";
   if (/^(https?:\/\/|data:image\/)/i.test(avatar) || /\.(png|jpe?g|gif|webp|svg)$/i.test(avatar)) {
-    avatarEl.innerHTML = `<img src="${escapeHtml(avatar)}" alt="${escapeHtml(cfg.name || "")}" class="avatar-img" />`;
+    avatarEl.innerHTML = `<img src="${escapeHtml(avatar)}" alt="${escapeHtml(cfg.name || "")}" />`;
   } else {
     avatarEl.textContent = avatar;
   }
 }
 
-// ---- GitHub 链接（全站统一跳转到你的主页）----
-const githubUrl = cfg.github
-  ? `https://github.com/${encodeURIComponent(cfg.github)}`
-  : "https://github.com/";
+// ---- 关于我 ----
+const aboutBox = document.getElementById("sidebar-about");
+if (aboutBox) {
+  aboutBox.innerHTML = (cfg.about || [])
+    .map((p) => `<p>${escapeHtml(p)}</p>`)
+    .join("");
+}
 
-document.querySelectorAll(".github-link").forEach((a) => {
-  a.href = githubUrl;
-  if (cfg.github) a.title = `访问 ${cfg.github} 的 GitHub`;
-});
-document.querySelectorAll(".github-username").forEach((el) => {
-  el.textContent = cfg.github ? `@${cfg.github}` : "GitHub";
-});
-
-// ---- 技能 ----
-function renderSkills() {
-  const grid = document.getElementById("skills-grid");
-  if (!grid || !Array.isArray(cfg.skills)) return;
-  grid.innerHTML = cfg.skills
+// ---- 高亮卡片 ----
+function renderHighlights() {
+  const grid = document.getElementById("highlights-grid");
+  if (!grid || !Array.isArray(cfg.highlights)) return;
+  grid.innerHTML = cfg.highlights
     .map(
-      (s) => `
-      <div class="skill-item">
-        <div class="skill-label"><span>${escapeHtml(s.name)}</span><span>${Number(s.level) || 0}%</span></div>
-        <div class="skill-bar"><div class="skill-fill" data-level="${Number(s.level) || 0}"></div></div>
-      </div>`
+      (h) => `
+      <a class="highlight-card" href="${escapeHtml(h.link || "#")}">
+        <span class="highlight-arrow">→</span>
+        <div class="highlight-num">${escapeHtml(h.number)}</div>
+        <h3>${escapeHtml(h.title)}</h3>
+        <p>${escapeHtml(h.desc)}</p>
+      </a>`
     )
     .join("");
 }
-renderSkills();
+renderHighlights();
+
+// ---- 文章列表 ----
+function renderPosts() {
+  const list = document.getElementById("posts-list");
+  if (!list || !Array.isArray(cfg.posts)) return;
+  list.innerHTML = cfg.posts
+    .map(
+      (p) => `
+      <article class="post-item" data-search="${escapeHtml((p.title + " " + p.excerpt).toLowerCase())}">
+        <h3 class="post-title"><a href="${escapeHtml(p.link || "#")}">${escapeHtml(p.title)}</a></h3>
+        <div class="post-meta">
+          <span>${escapeHtml(p.date)}</span> · <span class="post-cat">${escapeHtml(p.category)}</span>
+        </div>
+        <p class="post-excerpt">${escapeHtml(p.excerpt)}</p>
+        <a class="post-more" href="${escapeHtml(p.link || "#")}">继续读 →</a>
+      </article>`
+    )
+    .join("");
+}
+renderPosts();
 
 // ---- 项目 ----
 function renderProjects() {
@@ -83,106 +93,105 @@ function renderProjects() {
         ? `href="${escapeHtml(p.link)}"${isExternal ? ' target="_blank" rel="noopener"' : ""}`
         : "";
       const linkHtml = p.link
-        ? `<a ${linkAttr} class="project-link">了解更多 →</a>`
+        ? `<a ${linkAttr} class="project-link">查看 →</a>`
         : "";
       const tagsHtml = (p.tags || [])
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
         .join("");
       return `
-      <article class="project-card">
-        <div class="project-thumb">${escapeHtml(p.icon || "📁")}</div>
-        <div class="project-body">
-          <h3>${escapeHtml(p.title)}</h3>
-          <p>${escapeHtml(p.desc)}</p>
-          <div class="project-tags">${tagsHtml}</div>
-          ${linkHtml}
-        </div>
-      </article>`;
+      <div class="project-card">
+        <div class="project-icon">${escapeHtml(p.icon || "📁")}</div>
+        <h3>${escapeHtml(p.title)}</h3>
+        <p>${escapeHtml(p.desc)}</p>
+        <div class="project-tags">${tagsHtml}</div>
+        ${linkHtml}
+      </div>`;
     })
     .join("");
 }
 renderProjects();
 
-// ---- 联系 ----
-setText(
-  "contact-email",
-  cfg.email ? cfg.email : ""
-);
-document.getElementById("contact-email")?.setAttribute(
-  "href",
-  cfg.email ? `mailto:${cfg.email}` : "#"
-);
-
-function renderExtraContact() {
-  const box = document.getElementById("contact-links");
-  if (!box || !Array.isArray(cfg.extraContact)) return;
-  cfg.extraContact.forEach((c) => {
-    if (!c.label) return;
-    const a = document.createElement("a");
-    a.className = "contact-card";
-    a.href = c.href || "#";
-    if (/^https?:\/\//i.test(c.href || "")) {
-      a.target = "_blank";
-      a.rel = "noopener";
-    }
-    a.innerHTML = `<span class="contact-icon">${escapeHtml(c.icon || "🔗")}</span><span>${escapeHtml(c.label)}</span>`;
-    box.appendChild(a);
-  });
+// ---- 近期文章（侧边栏）----
+function renderRecent() {
+  const ul = document.getElementById("recent-posts");
+  if (!ul || !Array.isArray(cfg.posts)) return;
+  ul.innerHTML = cfg.posts
+    .slice(0, 6)
+    .map(
+      (p) => `<li><a href="${escapeHtml(p.link || "#")}">${escapeHtml(p.title)}</a></li>`
+    )
+    .join("");
 }
-renderExtraContact();
+renderRecent();
 
-// 若填写了 website，提示 GitHub 主页可回链到这里
-if (cfg.website) {
-  const note = document.getElementById("back-note");
-  if (note) {
-    note.style.display = "block";
-    note.textContent = `💡 提示：你可以在 GitHub 个人主页的 Website 栏填上 ${cfg.website}，实现网站与 GitHub 双向跳转。`;
+// ---- 分类 ----
+function renderCategories() {
+  const ul = document.getElementById("categories");
+  if (!ul || !Array.isArray(cfg.categories)) return;
+  ul.innerHTML = cfg.categories
+    .map(
+      (c) =>
+        `<li><a href="#writing"><span>${escapeHtml(c.name)}</span><span class="count">${escapeHtml(c.count)}</span></a></li>`
+    )
+    .join("");
+}
+renderCategories();
+
+// ---- GitHub 链接 ----
+const githubUrl = cfg.github
+  ? `https://github.com/${encodeURIComponent(cfg.github)}`
+  : "https://github.com/";
+document.querySelectorAll(".github-link").forEach((a) => {
+  a.href = githubUrl;
+  if (cfg.github) a.title = `访问 ${cfg.github} 的 GitHub`;
+});
+
+// ---- 邮箱 ----
+const emailEl = document.getElementById("contact-email");
+if (emailEl) {
+  if (cfg.email && cfg.email !== "you@example.com") {
+    emailEl.href = `mailto:${cfg.email}`;
+    emailEl.textContent = cfg.email;
+  } else {
+    emailEl.href = "mailto:";
+    emailEl.textContent = "邮箱";
   }
 }
+
+// ---- 搜索过滤 ----
+const searchInput = document.getElementById("search-input");
+searchInput?.addEventListener("input", () => {
+  const q = searchInput.value.trim().toLowerCase();
+  document.querySelectorAll(".post-item").forEach((item) => {
+    const hay = item.getAttribute("data-search") || "";
+    item.style.display = q && !hay.includes(q) ? "none" : "";
+  });
+});
 
 // ---- 页脚年份 ----
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// ============================================================
-//  交互逻辑
-// ============================================================
-// 移动端菜单开关
+// ---- 移动端菜单 ----
 const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-menuToggle?.addEventListener("click", () => navLinks.classList.toggle("open"));
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => navLinks.classList.remove("open"));
-});
+const nav = document.getElementById("nav");
+menuToggle?.addEventListener("click", () => nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach((a) =>
+  a.addEventListener("click", () => nav.classList.remove("open"))
+);
 
-// 滚动时高亮当前导航项
-const sections = document.querySelectorAll("section[id]");
-const navAnchors = document.querySelectorAll(".nav-links a");
-
+// ---- 滚动高亮导航 ----
+const sections = document.querySelectorAll("section[id], div[id='home']");
+const navAnchors = document.querySelectorAll(".nav a");
 function highlightNav() {
-  const scrollPos = window.scrollY + 120;
-  let currentId = "home";
-  sections.forEach((section) => {
-    if (scrollPos >= section.offsetTop) currentId = section.id;
+  const pos = window.scrollY + 100;
+  let current = "home";
+  sections.forEach((s) => {
+    if (pos >= s.offsetTop) current = s.id;
   });
   navAnchors.forEach((a) => {
-    a.classList.toggle("active", a.getAttribute("href") === `#${currentId}`);
+    const href = a.getAttribute("href") || "";
+    a.classList.toggle("active", href === `#${current}`);
   });
 }
 window.addEventListener("scroll", highlightNav);
 highlightNav();
-
-// 技能条进入视口时动画展开
-const skillObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const fill = entry.target;
-        fill.style.width = `${fill.dataset.level}%`;
-        skillObserver.unobserve(fill);
-      }
-    });
-  },
-  { threshold: 0.4 }
-);
-
-document.querySelectorAll(".skill-fill").forEach((fill) => skillObserver.observe(fill));

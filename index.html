@@ -3,130 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的个人网站</title>
-  <meta name="description" content="欢迎来到我的个人网站，这里展示我的项目、技能与联系方式。" />
+  <title>何庆丰 · 日拱一卒</title>
+  <meta name="description" content="何庆丰的个人网站：写作、产品与代码。" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 导航栏 -->
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a href="#home" class="logo" id="logo">我的网站</a>
-      <nav class="nav-links" id="nav-links">
+  <!-- 顶部 -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#home" class="brand">
+        <span class="brand-name" id="site-name">何庆丰</span>
+        <span class="brand-slogan" id="site-slogan">日拱一卒，功不唐捐</span>
+      </a>
+      <nav class="nav" id="nav">
         <a href="#home" class="active">首页</a>
-        <a href="#about">关于我</a>
-        <a href="#skills">技能</a>
+        <a href="#writing">文章</a>
         <a href="#projects">项目</a>
-        <a href="#contact">联系</a>
+        <a href="#about">关于</a>
+        <a href="#" target="_blank" rel="noopener" class="github-link">GitHub ↗</a>
       </nav>
-      <div class="nav-actions">
-        <a href="#" target="_blank" rel="noopener" class="github-link nav-github" aria-label="GitHub" title="访问我的 GitHub">
-          <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        </a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="打开菜单">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="打开菜单">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- 首页 / Hero -->
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="hero-greeting" id="hero-greeting">你好，我是</p>
-        <h1 class="hero-name" id="hero-name">你的名字</h1>
-        <p class="hero-role" id="hero-role">前端开发者 · 创作者 · 终身学习者</p>
-        <p class="hero-desc" id="hero-desc">
-          欢迎来到我的个人网站。这里记录了我的项目、技能与思考，也希望能与你产生一些有趣的连接。
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">查看我的项目</a>
-          <a href="#" target="_blank" rel="noopener" class="btn btn-github github-link">
-            <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-            <span class="github-username">GitHub</span>
-          </a>
-          <a href="#contact" class="btn btn-outline">联系我</a>
-        </div>
-      </div>
-      <div class="hero-avatar">
-        <div class="avatar-ring">
-          <div class="avatar-placeholder" id="hero-avatar">👋</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- 主体 -->
+  <div class="container layout" id="home">
+    <!-- 主内容 -->
+    <main class="main">
+      <!-- 高亮卡片 -->
+      <div class="highlights" id="highlights-grid"></div>
 
-  <!-- 关于我 -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2 class="section-title">关于我</h2>
-      <p class="section-subtitle">一点点了解我</p>
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>我的故事</h3>
-          <p id="about-story"></p>
+      <!-- 最近在写 -->
+      <section class="block" id="writing">
+        <div class="block-head">
+          <h2>最近在写</h2>
+          <a href="#writing" class="block-more">全部 →</a>
         </div>
-        <div class="about-card">
-          <h3>我的理念</h3>
-          <p id="about-philosophy"></p>
+        <div id="posts-list"></div>
+      </section>
+
+      <!-- 项目 -->
+      <section class="block" id="projects">
+        <div class="block-head">
+          <h2>项目</h2>
         </div>
-        <div class="about-card">
-          <h3>兴趣爱好</h3>
-          <p id="about-hobby"></p>
-        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+      </section>
+    </main>
+
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="widget">
+        <h3>搜索</h3>
+        <input type="search" id="search-input" class="search-input" placeholder="搜索文章关键词…" />
       </div>
-    </div>
-  </section>
 
-  <!-- 技能 -->
-  <section class="section section-alt" id="skills">
-    <div class="container">
-      <h2 class="section-title">我的技能</h2>
-      <p class="section-subtitle">我常用的工具与技术</p>
-      <div class="skills-grid" id="skills-grid"></div>
-    </div>
-  </section>
-
-  <!-- 项目 -->
-  <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section-title">我的项目</h2>
-      <p class="section-subtitle">一些我做过的东西</p>
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-  </section>
-
-  <!-- 联系 -->
-  <section class="section section-alt" id="contact">
-    <div class="container contact-inner">
-      <h2 class="section-title">联系我</h2>
-      <p class="section-subtitle">欢迎交流与合作</p>
-      <p class="contact-desc">
-        如果你有想法、建议，或只是想打个招呼，都可以通过下面的方式找到我。
-      </p>
-      <div class="contact-links" id="contact-links">
-        <a href="mailto:you@example.com" class="contact-card" id="contact-email">
-          <span class="contact-icon">✉️</span>
-          <span>you@example.com</span>
-        </a>
-        <a href="#" target="_blank" rel="noopener" class="contact-card github-link">
-          <span class="contact-icon">🐙</span>
-          <span class="github-username">GitHub</span>
-        </a>
+      <div class="widget" id="about">
+        <div class="about-head">
+          <div class="avatar" id="sidebar-avatar">何</div>
+          <div>
+            <div class="about-name" id="sidebar-name">何庆丰</div>
+            <div class="about-meta">写代码 · 做产品 · 写点东西</div>
+          </div>
+        </div>
+        <div class="about-text" id="sidebar-about"></div>
       </div>
-      <p class="contact-back-note" id="back-note" style="display:none"></p>
-    </div>
-  </section>
+
+      <div class="widget">
+        <h3>近期文章</h3>
+        <ul class="link-list" id="recent-posts"></ul>
+      </div>
+
+      <div class="widget">
+        <h3>分类</h3>
+        <ul class="link-list" id="categories"></ul>
+      </div>
+
+      <div class="widget">
+        <h3>外站</h3>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener" class="github-link">GitHub</a></li>
+          <li><a href="mailto:you@example.com" id="contact-email">邮箱</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
 
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> <span id="footer-name">我的个人网站</span> · 用心制作</p>
-      <a href="#" target="_blank" rel="noopener" class="github-link footer-github">
-        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        <span class="github-username">GitHub</span>
-      </a>
+      <div class="footer-links">
+        <a href="#" target="_blank" rel="noopener" class="github-link">GitHub</a>
+        <a href="#writing">文章</a>
+        <a href="#projects">项目</a>
+        <a href="#about">关于</a>
+      </div>
+      <p>© <span id="year"></span> <span id="footer-name">何庆丰</span> · <span id="footer-slogan">日拱一卒</span></p>
     </div>
   </footer>
 
