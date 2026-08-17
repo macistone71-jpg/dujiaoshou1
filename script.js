@@ -24,6 +24,7 @@ setText("site-slogan", cfg.slogan);
 setText("sidebar-name", cfg.name);
 setText("footer-name", cfg.name);
 setText("footer-slogan", cfg.slogan);
+setText("about-meta", cfg.role);
 
 // ---- 头像（文字 / emoji / 图片）----
 const avatarEl = document.getElementById("sidebar-avatar");
