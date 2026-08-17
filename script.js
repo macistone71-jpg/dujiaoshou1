@@ -69,14 +69,14 @@ function renderPosts() {
   if (!list || !Array.isArray(cfg.posts)) return;
   list.innerHTML = cfg.posts
     .map(
-      (p) => `
+      (p, i) => `
       <article class="post-item" data-search="${escapeHtml((p.title + " " + p.excerpt).toLowerCase())}">
-        <h3 class="post-title"><a href="${escapeHtml(p.link || "#")}">${escapeHtml(p.title)}</a></h3>
+        <h3 class="post-title"><a href="#" data-post="${i}">${escapeHtml(p.title)}</a></h3>
         <div class="post-meta">
           <span>${escapeHtml(p.date)}</span> · <span class="post-cat">${escapeHtml(p.category)}</span>
         </div>
         <p class="post-excerpt">${escapeHtml(p.excerpt)}</p>
-        <a class="post-more" href="${escapeHtml(p.link || "#")}">继续读 →</a>
+        <a class="post-more" href="#" data-post="${i}">继续读 →</a>
       </article>`
     )
     .join("");
@@ -88,19 +88,16 @@ function renderProjects() {
   const grid = document.getElementById("projects-grid");
   if (!grid || !Array.isArray(cfg.projects)) return;
   grid.innerHTML = cfg.projects
-    .map((p) => {
+    .map((p, i) => {
       const isExternal = /^https?:\/\//i.test(p.link || "");
-      const linkAttr = p.link
-        ? `href="${escapeHtml(p.link)}"${isExternal ? ' target="_blank" rel="noopener"' : ""}`
-        : "";
       const linkHtml = p.link
-        ? `<a ${linkAttr} class="project-link">查看 →</a>`
-        : "";
+        ? `<a href="${escapeHtml(p.link)}"${isExternal ? ' target="_blank" rel="noopener"' : ""} class="project-link">查看 →</a>`
+        : `<span class="project-link" data-project="${i}">查看详情 →</span>`;
       const tagsHtml = (p.tags || [])
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
         .join("");
       return `
-      <div class="project-card">
+      <div class="project-card" data-project="${i}">
         <div class="project-icon">${escapeHtml(p.icon || "📁")}</div>
         <h3>${escapeHtml(p.title)}</h3>
         <p>${escapeHtml(p.desc)}</p>
@@ -119,7 +116,7 @@ function renderRecent() {
   ul.innerHTML = cfg.posts
     .slice(0, 6)
     .map(
-      (p) => `<li><a href="${escapeHtml(p.link || "#")}">${escapeHtml(p.title)}</a></li>`
+      (p, i) => `<li><a href="#" data-post="${i}">${escapeHtml(p.title)}</a></li>`
     )
     .join("");
 }
@@ -171,6 +168,88 @@ searchInput?.addEventListener("input", () => {
 
 // ---- 页脚年份 ----
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// ============================================================
+//  阅读弹窗（文章 / 项目详情）
+// ============================================================
+function renderBlocks(blocks) {
+  return (blocks || [])
+    .map((b) => {
+      if (b.h2) return `<h2 class="article-h2">${escapeHtml(b.h2)}</h2>`;
+      if (b.p) return `<p>${escapeHtml(b.p)}</p>`;
+      if (b.quote) return `<blockquote class="article-quote">${escapeHtml(b.quote)}</blockquote>`;
+      if (Array.isArray(b.list))
+        return `<ul class="article-list">${b.list.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
+      return "";
+    })
+    .join("");
+}
+
+const modal = document.getElementById("modal");
+const modalBody = document.getElementById("modal-body");
+
+function openModal(html) {
+  modalBody.innerHTML = html;
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  const panel = modal.querySelector(".modal-panel");
+  if (panel) panel.scrollTop = 0;
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function openPost(i) {
+  const p = cfg.posts[i];
+  if (!p) return;
+  openModal(`
+    <div class="article-head">
+      <div class="article-meta"><span>${escapeHtml(p.date)}</span> · <span class="post-cat">${escapeHtml(p.category)}</span></div>
+      <h1 class="article-title">${escapeHtml(p.title)}</h1>
+    </div>
+    <div class="article-content">${renderBlocks(p.content)}</div>
+  `);
+}
+
+function openProject(i) {
+  const p = cfg.projects[i];
+  if (!p) return;
+  const linkHtml = p.link
+    ? `<a class="article-cta" href="${escapeHtml(p.link)}" target="_blank" rel="noopener">查看仓库 →</a>`
+    : "";
+  openModal(`
+    <div class="article-head">
+      <div class="article-meta"><span class="post-cat">项目</span></div>
+      <h1 class="article-title">${escapeHtml(p.icon || "")} ${escapeHtml(p.title)}</h1>
+    </div>
+    <div class="article-content">${renderBlocks(p.detail)}</div>
+    ${linkHtml}
+  `);
+}
+
+// 事件委托：打开文章 / 项目详情 / 关闭弹窗
+document.addEventListener("click", (e) => {
+  const post = e.target.closest("[data-post]");
+  if (post) {
+    e.preventDefault();
+    openPost(Number(post.dataset.post));
+    return;
+  }
+  const proj = e.target.closest("[data-project]");
+  if (proj && !e.target.closest("a")) {
+    openProject(Number(proj.dataset.project));
+    return;
+  }
+  if (e.target.closest("[data-close]")) closeModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
 
 // ---- 移动端菜单 ----
 const menuToggle = document.getElementById("menu-toggle");

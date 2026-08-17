@@ -463,3 +463,137 @@ a:hover {
     display: flex;
   }
 }
+
+/* ===== 阅读弹窗（文章 / 项目详情） ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-panel {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 40px 44px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  transform: translateY(16px);
+  transition: transform 0.2s ease;
+}
+
+.modal.open .modal-panel {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.modal-close:hover {
+  color: var(--accent);
+}
+
+/* 文章正文排版 */
+.article-meta {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.article-meta .post-cat {
+  color: var(--accent);
+}
+
+.article-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.article-content p {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.article-content .article-h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 28px 0 12px;
+}
+
+.article-content .article-list {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.article-content .article-list li {
+  margin-bottom: 8px;
+}
+
+.article-content .article-quote {
+  margin: 20px 0;
+  padding: 12px 18px;
+  border-left: 3px solid var(--accent);
+  background: #faf6f2;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.article-cta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.article-cta:hover {
+  background: #b85a0e;
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .modal-panel {
+    padding: 28px 22px;
+    max-height: 90vh;
+  }
+
+  .article-title {
+    font-size: 1.25rem;
+  }
+}
