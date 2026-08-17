@@ -334,18 +334,25 @@ a:hover {
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: var(--accent);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+/* 头像占位（未上传照片时） */
+.avatar.avatar-placeholder {
+  background: transparent;
+  color: var(--accent);
+  border: 2px dashed var(--accent);
 }
 
 .avatar img {

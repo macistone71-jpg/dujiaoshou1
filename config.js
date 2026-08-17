@@ -6,7 +6,7 @@ window.SITE_CONFIG = {
   name: "何庆丰",
   slogan: "日拱一卒，功不唐捐",
   role: "产品经理 · 2 年经验",
-  avatar: "何",
+  avatar: "何", // 头像：把你的照片地址填到这里即可，如 "https://xxx.jpg" 或 "./avatar.jpg"；不填则显示“何”字占位
   github: "macistone71-jpg",
   email: "you@example.com",
   website: "https://macistone71-jpg.github.io/dujiaoshou1/",

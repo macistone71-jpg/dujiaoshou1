@@ -34,8 +34,10 @@ if (avatarEl) {
   const avatar = cfg.avatar || cfg.name?.slice(0, 1) || "何";
   if (/^(https?:\/\/|data:image\/)/i.test(avatar) || /\.(png|jpe?g|gif|webp|svg)$/i.test(avatar)) {
     avatarEl.innerHTML = `<img src="${escapeHtml(avatar)}" alt="${escapeHtml(cfg.name || "")}" />`;
+    avatarEl.classList.remove("avatar-placeholder");
   } else {
     avatarEl.textContent = avatar;
+    avatarEl.classList.add("avatar-placeholder");
   }
 }
 
