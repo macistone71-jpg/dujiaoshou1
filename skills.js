@@ -6,7 +6,7 @@ window.SKILLS = [
     en: "value-judge",
     type: "产品",
     desc: "用「用户价值 = 新体验 - 旧体验 - 替换成本」公式判断需求值不值得做",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou4",
+    repo: "https://github.com/macistone71-jpg/value-judgment-skill",
   },
   {
     icon: "🧩",
@@ -14,7 +14,7 @@ window.SKILLS = [
     en: "requirement-analyzer",
     type: "产品",
     desc: "把模糊需求拆成可交付方案：用户-场景-问题 → 问题vs方案 → 价值 → 指标 → 文档",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou5",
+    repo: "https://github.com/macistone71-jpg/requirement-analysis-skill",
   },
   {
     icon: "📚",
@@ -22,7 +22,7 @@ window.SKILLS = [
     en: "course-designer",
     type: "线上教育",
     desc: "把一个知识主题设计成结构清晰、能落地交付的线上课程",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou6",
+    repo: "https://github.com/macistone71-jpg/course-design-skill",
   },
   {
     icon: "🔍",
@@ -30,7 +30,7 @@ window.SKILLS = [
     en: "competitive-analyzer",
     type: "产品",
     desc: "看清市场分层，按四维度拆解竞品，落到「我们该怎么做」",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou7",
+    repo: "https://github.com/macistone71-jpg/competitive-analysis-skill",
   },
   {
     icon: "🎙️",
@@ -38,7 +38,7 @@ window.SKILLS = [
     en: "lesson-script",
     type: "线上教育",
     desc: "用钩子-讲解-案例-练习-总结五段式，把知识点写成能录制的讲稿",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou8",
+    repo: "https://github.com/macistone71-jpg/script-writing-skill",
   },
   {
     icon: "📝",
@@ -46,7 +46,7 @@ window.SKILLS = [
     en: "launch-retrospective",
     type: "产品",
     desc: "用复盘五问把做对的、做错的、下次怎么改想清楚",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou9",
+    repo: "https://github.com/macistone71-jpg/product-review-skill",
   },
   {
     icon: "✅",
@@ -54,6 +54,6 @@ window.SKILLS = [
     en: "learning-assessment",
     type: "线上教育",
     desc: "设计能检验学习效果的作业、测验和练习",
-    repo: "https://github.com/macistone71-jpg/dujiaoshou10",
+    repo: "https://github.com/macistone71-jpg/learning-assessment-skill",
   },
 ];
