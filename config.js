@@ -21,7 +21,7 @@ window.SITE_CONFIG = {
   // ---- 顶部高亮卡片 ----
   highlights: [
     { number: "6", title: "文章", desc: "产品、读书、写作 · 2024–2026", link: "#writing" },
-    { number: "3", title: "项目", desc: "做过的产品与案例", link: "#projects" },
+    { number: "4", title: "项目", desc: "做过的产品与案例", link: "#projects" },
     { number: "→", title: "关于", desc: "关于我和这个网站", link: "#about" },
   ],
 
