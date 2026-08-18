@@ -2,10 +2,10 @@
 window.SKILLS = [
   {
     icon: "🎯",
-    name: "价值判断",
-    en: "value-judge",
-    type: "产品",
-    desc: "用「用户价值 = 新体验 - 旧体验 - 替换成本」公式判断需求值不值得做",
+    name: "AI 需求价值判断",
+    en: "ai-value-judge",
+    type: "AI 产品",
+    desc: "用通用价值公式 + AI 特有五问，判断一个 AI 功能值不值得做",
     repo: "https://github.com/macistone71-jpg/value-judgment-skill",
   },
   {
@@ -18,10 +18,10 @@ window.SKILLS = [
   },
   {
     icon: "📚",
-    name: "课程设计",
-    en: "course-designer",
-    type: "线上教育",
-    desc: "把一个知识主题设计成结构清晰、能落地交付的线上课程",
+    name: "AI 备课工作流",
+    en: "ai-lesson-planner",
+    type: "AI + 教育",
+    desc: "人机协作备课：AI 生成大纲、教案、讲稿初稿，人做审核和打磨",
     repo: "https://github.com/macistone71-jpg/course-design-skill",
   },
   {
@@ -50,10 +50,10 @@ window.SKILLS = [
   },
   {
     icon: "✅",
-    name: "学习评估",
-    en: "learning-assessment",
-    type: "线上教育",
-    desc: "设计能检验学习效果的作业、测验和练习",
+    name: "笔记转 AI 考试",
+    en: "ai-quiz-generator",
+    type: "AI + 教育",
+    desc: "把课堂笔记交给 AI，自动生成线上考试链接，打通学-测-反馈闭环",
     repo: "https://github.com/macistone71-jpg/learning-assessment-skill",
   },
 ];
