@@ -113,6 +113,29 @@ function renderProjects() {
 }
 renderProjects();
 
+// ---- 重点项目 ----
+function renderFeatured() {
+  const grid = document.getElementById("featured-grid");
+  const featured = window.FEATURED || [];
+  if (!grid || !Array.isArray(featured)) return;
+  grid.innerHTML = featured
+    .map((p) => {
+      const tagsHtml = (p.tags || [])
+        .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+        .join("");
+      return `
+      <a class="project-card" href="${escapeHtml(p.link)}" target="_blank" rel="noopener">
+        <div class="project-icon">${escapeHtml(p.icon || "⭐")}</div>
+        <h3>${escapeHtml(p.title)}</h3>
+        <p>${escapeHtml(p.desc)}</p>
+        <div class="project-tags">${tagsHtml}</div>
+        <span class="project-link">查看 →</span>
+      </a>`;
+    })
+    .join("");
+}
+renderFeatured();
+
 // ---- Skills ----
 function renderSkills() {
   const grid = document.getElementById("skills-grid");
