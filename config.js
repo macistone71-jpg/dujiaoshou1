@@ -10,6 +10,11 @@ window.SITE_CONFIG = {
   github: "macistone71-jpg",
   email: "macistone71@gmail.com",
   website: "https://macistone71-jpg.github.io/dujiaoshou1/",
+  wechat: {
+    name: "千秋少年创意园",
+    // 微信公众号没有稳定的网页版主页，入口指向最新公开文章。
+    url: "https://mp.weixin.qq.com/s/GpXb11O-Rpft1lFoCflEKQ",
+  },
 
   // ---- 关于我 ----
   about: [
@@ -20,13 +25,14 @@ window.SITE_CONFIG = {
 
   // ---- 顶部高亮卡片 ----
   highlights: [
-    { number: "6", title: "文章", desc: "产品、读书、写作 · 2024–2026", link: "#writing" },
+    { number: "11", title: "文章", desc: "个人网站 + 公众号内容", link: "#writing" },
     { number: "4", title: "项目", desc: "做过的产品与案例", link: "#projects" },
     { number: "→", title: "关于", desc: "关于我和这个网站", link: "#about" },
   ],
 
   // ---- 分类 ----
   categories: [
+    { name: "公众号", count: 5 },
     { name: "思考", count: 4 },
     { name: "读书", count: 1 },
     { name: "项目", count: 1 },

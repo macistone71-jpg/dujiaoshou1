@@ -2,9 +2,14 @@
 //  网站逻辑 —— 风格参考 rui.juzi.bot，数据来自 config.js
 // ============================================================
 const cfg = window.SITE_CONFIG || {};
-const POSTS = window.POSTS || [];
-const PROJECTS = window.PROJECTS || [];
 const ARTICLE_VISUALS = window.ARTICLE_VISUALS || [];
+const POSTS = (window.POSTS || [])
+  .map((post, index) => {
+    if (!post.visuals && ARTICLE_VISUALS[index]) post.visuals = ARTICLE_VISUALS[index];
+    return post;
+  })
+  .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+const PROJECTS = window.PROJECTS || [];
 
 function escapeHtml(str) {
   return String(str ?? "")
@@ -82,7 +87,7 @@ function renderPosts() {
   if (!list || !Array.isArray(POSTS)) return;
   list.innerHTML = POSTS
     .map((p, i) => {
-      const cover = ARTICLE_VISUALS[i]?.[0];
+      const cover = p.visuals?.[0];
       return `
       <article class="post-item" data-search="${escapeHtml((p.title + " " + p.excerpt).toLowerCase())}">
         ${cover ? `<a class="post-cover-link" href="#post-${i + 1}" data-post="${i}" aria-label="阅读：${escapeHtml(p.title)}"><img class="post-cover" src="${escapeHtml(cover.src)}" alt="" loading="lazy" /></a>` : ""}
@@ -205,6 +210,13 @@ document.querySelectorAll(".github-link").forEach((a) => {
   if (cfg.github) a.title = `访问 ${cfg.github} 的 GitHub`;
 });
 
+// ---- 微信公众号入口 ----
+const wechatUrl = cfg.wechat?.url || "https://mp.weixin.qq.com/";
+document.querySelectorAll(".wechat-link").forEach((a) => {
+  a.href = wechatUrl;
+  a.title = `进入微信公众号：${cfg.wechat?.name || "公众号"}`;
+});
+
 // ---- 邮箱 ----
 const emailEl = document.getElementById("contact-email");
 if (emailEl) {
@@ -311,7 +323,11 @@ function openPost(i, { updateUrl = true } = {}) {
   if (!p) return;
   if (!location.hash.startsWith("#post-")) modalReturnHash = location.hash || "#writing";
   activePostIndex = i;
-  const visuals = ARTICLE_VISUALS[i] || [];
+  const visuals = p.visuals || [];
+  const sourceName = p.sourceName || cfg.name || "何庆丰";
+  const sourceLink = p.sourceUrl
+    ? `<a class="article-source" href="${escapeHtml(p.sourceUrl)}" target="_blank" rel="noopener">查看公众号原文 ↗</a>`
+    : "";
   document.title = `${p.title} · ${cfg.name || ""}`;
   if (updateUrl && location.hash !== `#post-${i + 1}`) {
     history.pushState({ post: i }, "", `#post-${i + 1}`);
@@ -319,10 +335,10 @@ function openPost(i, { updateUrl = true } = {}) {
   openModal(`
     <article class="wechat-article">
       <header class="article-head">
-        <div class="article-label">${escapeHtml(p.category)} · 产品思考</div>
+        <div class="article-label">${escapeHtml(p.category)}${p.sourceUrl ? " · 公众号同步" : " · 产品思考"}</div>
         <h1 class="article-title" id="article-dialog-title">${escapeHtml(p.title)}</h1>
         <div class="article-byline">
-          <span class="article-author">${escapeHtml(cfg.name || "何庆丰")}</span>
+          <span class="article-author">${escapeHtml(p.author || sourceName)}</span>
           <span>${escapeHtml(p.date)}</span>
           <span>约 ${readingMinutes(p)} 分钟阅读</span>
         </div>
@@ -330,6 +346,7 @@ function openPost(i, { updateUrl = true } = {}) {
       ${renderFigure(visuals[0], "article-hero")}
       <div class="article-lead">${escapeHtml(p.excerpt)}</div>
       <div class="article-content">${renderArticleBlocks(p.content, visuals)}</div>
+      ${sourceLink}
       <footer class="article-end">
         <span>END</span>
         <strong>${escapeHtml(cfg.name || "何庆丰")}</strong>

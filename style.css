@@ -97,6 +97,17 @@ a:hover {
   color: var(--accent);
 }
 
+.nav .nav-wechat {
+  margin-left: 4px;
+  color: #fff;
+  background: #07c160;
+}
+
+.nav .nav-wechat:hover {
+  color: #fff;
+  background: #06ad56;
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -385,6 +396,38 @@ a:hover {
   margin-bottom: 12px;
   padding-bottom: 6px;
   border-bottom: 1px solid var(--border);
+}
+
+.wechat-widget {
+  padding: 18px;
+  border: 1px solid #d9f3e3;
+  border-radius: 10px;
+  background: #f4fcf7;
+}
+
+.wechat-widget h3 {
+  color: #079447;
+  border-bottom-color: #d9f3e3;
+}
+
+.wechat-widget p {
+  margin-bottom: 12px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.wechat-entry {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 7px;
+  color: #fff;
+  background: #07c160;
+  font-weight: 650;
+}
+
+.wechat-entry:hover {
+  color: #fff;
+  background: #06ad56;
 }
 
 .search-input {
@@ -816,6 +859,23 @@ a:hover {
 .article-cta:hover {
   background: #b85a0e;
   color: #fff;
+}
+
+.article-source {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 24px;
+  padding: 10px 16px;
+  border: 1px solid #bfe9d0;
+  border-radius: 8px;
+  color: #079447;
+  background: #f4fcf7;
+  font-weight: 650;
+}
+
+.article-source:hover {
+  color: #067a3b;
+  border-color: #8bd4a9;
 }
 
 @media (max-width: 640px) {
