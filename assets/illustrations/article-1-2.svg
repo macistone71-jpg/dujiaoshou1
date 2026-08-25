@@ -1,42 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">价值公式</title>
-  <desc id="desc">新体验 − 旧体验 − 替换成本</desc>
+  <title id="title">价值公式</title><desc id="desc">用户从旧办法走向新体验，中间隔着一条河</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF4EC"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#4A2418" flood-opacity=".10"/></filter>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6"/></filter>
+    <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="4" cy="7" r="1" fill="#302A26" opacity=".12"/><circle cx="20" cy="18" r=".8" fill="#C65D3B" opacity=".12"/><path d="M10 24 l3 -1" stroke="#302A26" stroke-width=".7" opacity=".1"/></pattern>
   </defs>
   <style>
-    .kicker,.num{font:700 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:2px}
-    .title{font:800 54px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .subtitle{font:400 24px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .label{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .foot{font:500 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:1px}
+    .sketch{filter:url(#rough)}
+    .kicker{font:700 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:3px}
+    .title{font:700 42px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .subtitle{font:400 19px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .note{font:500 20px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#302A26}
+    .sticky{font:700 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#302A26}
+    .bubble{font:600 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#302A26}
+    .tiny{font:600 15px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#fff}
+    .face{font:700 18px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#302A26}
+    .bigq{font:800 82px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#C65D3B}
   </style>
-  <rect width="1200" height="675" rx="36" fill="url(#bg)"/>
-  <circle cx="1070" cy="76" r="170" fill="#F2C7AE" fill-opacity=".45"/>
-  <circle cx="1130" cy="620" r="245" fill="#B85C38" fill-opacity=".07"/>
-  <path d="M0 550 C220 475 320 655 560 575 C770 505 870 595 1200 485 V675 H0Z" fill="#F2C7AE" fill-opacity=".22"/>
-  <g filter="url(#shadow)"><rect x="72" y="72" width="1056" height="531" rx="32" fill="#FFFFFF" fill-opacity=".48"/></g>
-  <text x="116" y="142" class="kicker" fill="#B85C38">何庆丰 · 产品思考  /  A01—02</text>
-  <text x="116" y="252" class="title" fill="#4A2418">价值公式</text>
-  <text x="116" y="326" class="subtitle" fill="#4A2418" opacity=".72">新体验 − 旧体验 − 替换成本</text>
-  <rect x="116" y="428" width="92" height="8" rx="4" fill="#B85C38"/>
-  <text x="116" y="500" class="foot" fill="#4A2418" opacity=".65">日拱一卒 · 功不唐捐</text>
-  <g><g>
-          <rect x="705" y="246" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="281" r="23" fill="#B85C38"/>
-          <text x="748" y="288" text-anchor="middle" class="num">01</text>
-          <text x="788" y="289" class="label">感知提升</text>
-        </g><g>
-          <rect x="705" y="338" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="373" r="23" fill="#B85C38"/>
-          <text x="748" y="380" text-anchor="middle" class="num">02</text>
-          <text x="788" y="381" class="label">真实替代</text>
-        </g><g>
-          <rect x="705" y="430" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="465" r="23" fill="#B85C38"/>
-          <text x="748" y="472" text-anchor="middle" class="num">03</text>
-          <text x="788" y="473" class="label">切换阻力</text>
-        </g></g>
-  <path d="M640 190 V500" stroke="#B85C38" stroke-width="2" stroke-dasharray="6 10" opacity=".25"/>
+  <rect width="1200" height="675" rx="28" fill="#FFF7EE"/>
+  <g opacity=".5"><path d="M30 115 Q260 90 500 112 T1170 100" stroke="#F4C9AA" stroke-width="3" fill="none"/><path d="M45 585 Q350 610 650 585 T1160 595" stroke="#F4C9AA" stroke-width="3" fill="none"/></g>
+  <path d="M24 30 Q310 20 590 28 T1174 25 L1180 640 Q910 654 610 646 T25 650Z" fill="none" stroke="#302A26" stroke-width="3" stroke-dasharray="9 7" opacity=".45" class="sketch"/>
+  <text x="68" y="70" class="kicker" fill="#C65D3B">小何的产品手记  ·  01/02</text>
+  <text x="68" y="123" class="title" fill="#302A26">价值公式</text>
+  <text x="68" y="156" class="subtitle" fill="#302A26" opacity=".72">用户从旧办法走向新体验，中间隔着一条河</text>
+  <g transform="translate(0 32)"><path d="M90 535 Q260 522 430 536 T770 534 T1110 538" stroke="#302A26" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 10"/><g class="sketch" transform="translate(230 520) scale(.85) translate(-230 -520)">
+      <circle cx="230" cy="336" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M199 327 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="230" y="346" text-anchor="middle" class="face">:|</text>
+      <path d="M230 372 C222 410 236 454 230 484" stroke="#302A26" stroke-width="5" fill="#315B55"/>
+      <path d="M196 381 Q172 428 156 445" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M264 381 Q285 414 294 440" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M226 482 L196 520" stroke="#302A26" stroke-width="6"/>
+      <path d="M234 482 L264 520" stroke="#302A26" stroke-width="6"/>
+      <path d="M182 520 h30 M248 520 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      
+    </g><path d="M350 500 Q585 340 820 500" stroke="#302A26" stroke-width="14" fill="none" stroke-dasharray="22 13" class="sketch"/><path d="M420 510 Q585 650 750 510" fill="#F4C9AA" opacity=".55"/><circle cx="585" cy="470" r="55" fill="#fff" stroke="#C65D3B" stroke-width="4" class="sketch"/><text x="585" y="462" class="sticky" text-anchor="middle">切换</text><text x="585" y="490" class="sticky" text-anchor="middle">成本</text><g class="sketch" transform="translate(935 520) scale(.85) translate(-935 -520)">
+      <circle cx="935" cy="336" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M904 327 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="935" y="346" text-anchor="middle" class="face">:)</text>
+      <path d="M935 372 C943 410 929 454 935 484" stroke="#302A26" stroke-width="5" fill="#C65D3B"/>
+      <path d="M901 381 Q877 428 861 445" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M969 381 Q880 414 871 440" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M931 482 L901 520" stroke="#302A26" stroke-width="6"/>
+      <path d="M939 482 L969 520" stroke="#302A26" stroke-width="6"/>
+      <path d="M887 520 h30 M953 520 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      
+    </g><g transform="rotate(-5 200.0 249.0)" class="sketch"><rect x="125" y="205" width="150" height="88" rx="5" fill="#F4C9AA" stroke="#302A26" stroke-width="3"/><path d="M247 205 l28 28 h-28z" fill="#fff" opacity=".6"/><text x="200.0" y="257.0" class="sticky" text-anchor="middle">旧体验</text></g><g transform="rotate(3 580.0 219.0)" class="sketch"><rect x="505" y="175" width="150" height="88" rx="5" fill="#FFE4A8" stroke="#302A26" stroke-width="3"/><path d="M627 175 l28 28 h-28z" fill="#fff" opacity=".6"/><text x="580.0" y="227.0" class="sticky" text-anchor="middle">替换成本</text></g><g transform="rotate(5 980.0 249.0)" class="sketch"><rect x="905" y="205" width="150" height="88" rx="5" fill="#D7EFE5" stroke="#302A26" stroke-width="3"/><path d="M1027 205 l28 28 h-28z" fill="#fff" opacity=".6"/><text x="980.0" y="257.0" class="sticky" text-anchor="middle">新体验</text></g><path d="M325 300 Q585.0 270 845 300 m-18 -12 l18 12 l-17 14" stroke="#C65D3B" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="1120" y="625" text-anchor="end" class="subtitle" fill="#C65D3B">日拱一卒 · 功不唐捐</text>
+  <rect width="1200" height="675" rx="28" fill="url(#grain)" pointer-events="none"/>
 </svg>

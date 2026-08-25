@@ -1,42 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">从执行到负责</title>
-  <desc id="desc">一个小功能的完整上线闭环</desc>
+  <title id="title">从执行到负责</title><desc id="desc">这一次，小何接过的不只是任务，还有结果</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF0F3"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#552331" flood-opacity=".10"/></filter>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="1" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6"/></filter>
+    <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="4" cy="7" r="1" fill="#3D2D32" opacity=".12"/><circle cx="20" cy="18" r=".8" fill="#B34E68" opacity=".12"/><path d="M10 24 l3 -1" stroke="#3D2D32" stroke-width=".7" opacity=".1"/></pattern>
   </defs>
   <style>
-    .kicker,.num{font:700 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:2px}
-    .title{font:800 54px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .subtitle{font:400 24px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .label{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .foot{font:500 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:1px}
+    .sketch{filter:url(#rough)}
+    .kicker{font:700 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:3px}
+    .title{font:700 42px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .subtitle{font:400 19px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .note{font:500 20px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#3D2D32}
+    .sticky{font:700 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#3D2D32}
+    .bubble{font:600 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#3D2D32}
+    .tiny{font:600 15px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#fff}
+    .face{font:700 18px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#3D2D32}
+    .bigq{font:800 82px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#B34E68}
   </style>
-  <rect width="1200" height="675" rx="36" fill="url(#bg)"/>
-  <circle cx="1070" cy="76" r="170" fill="#EDBAC5" fill-opacity=".45"/>
-  <circle cx="1130" cy="620" r="245" fill="#A3475B" fill-opacity=".07"/>
-  <path d="M0 550 C220 475 320 655 560 575 C770 505 870 595 1200 485 V675 H0Z" fill="#EDBAC5" fill-opacity=".22"/>
-  <g filter="url(#shadow)"><rect x="72" y="72" width="1056" height="531" rx="32" fill="#FFFFFF" fill-opacity=".48"/></g>
-  <text x="116" y="142" class="kicker" fill="#A3475B">何庆丰 · 产品思考  /  A06—01</text>
-  <text x="116" y="252" class="title" fill="#552331">从执行到负责</text>
-  <text x="116" y="326" class="subtitle" fill="#552331" opacity=".72">一个小功能的完整上线闭环</text>
-  <rect x="116" y="428" width="92" height="8" rx="4" fill="#A3475B"/>
-  <text x="116" y="500" class="foot" fill="#552331" opacity=".65">日拱一卒 · 功不唐捐</text>
-  <g><g>
-          <rect x="705" y="246" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="281" r="23" fill="#A3475B"/>
-          <text x="748" y="288" text-anchor="middle" class="num">01</text>
-          <text x="788" y="289" class="label">需求</text>
-        </g><g>
-          <rect x="705" y="338" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="373" r="23" fill="#A3475B"/>
-          <text x="748" y="380" text-anchor="middle" class="num">02</text>
-          <text x="788" y="381" class="label">上线</text>
-        </g><g>
-          <rect x="705" y="430" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="465" r="23" fill="#A3475B"/>
-          <text x="748" y="472" text-anchor="middle" class="num">03</text>
-          <text x="788" y="473" class="label">复盘</text>
-        </g></g>
-  <path d="M640 190 V500" stroke="#A3475B" stroke-width="2" stroke-dasharray="6 10" opacity=".25"/>
+  <rect width="1200" height="675" rx="28" fill="#FFF5F7"/>
+  <g opacity=".5"><path d="M30 115 Q260 90 500 112 T1170 100" stroke="#F0C5CF" stroke-width="3" fill="none"/><path d="M45 585 Q350 610 650 585 T1160 595" stroke="#F0C5CF" stroke-width="3" fill="none"/></g>
+  <path d="M24 30 Q310 20 590 28 T1174 25 L1180 640 Q910 654 610 646 T25 650Z" fill="none" stroke="#3D2D32" stroke-width="3" stroke-dasharray="9 7" opacity=".45" class="sketch"/>
+  <text x="68" y="70" class="kicker" fill="#B34E68">小何的产品手记  ·  06/01</text>
+  <text x="68" y="123" class="title" fill="#3D2D32">从执行到负责</text>
+  <text x="68" y="156" class="subtitle" fill="#3D2D32" opacity=".72">这一次，小何接过的不只是任务，还有结果</text>
+  <g transform="translate(0 32)"><path d="M90 535 Q260 522 430 536 T770 534 T1110 538" stroke="#3D2D32" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 10"/><g class="sketch" transform="translate(300 530) scale(.9) translate(-300 -530)">
+      <circle cx="300" cy="346" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M269 337 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="300" y="356" text-anchor="middle" class="face">:)</text>
+      <path d="M300 382 C292 420 306 464 300 494" stroke="#302A26" stroke-width="5" fill="#507A70"/>
+      <path d="M266 391 Q242 438 226 455" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M334 391 Q355 424 364 450" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M296 492 L266 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M304 492 L334 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M252 530 h30 M318 530 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      
+    </g><path d="M395 330 l210 85" stroke="#B34E68" stroke-width="18"/><path d="M390 325 l35 -20 m165 105 l35 -20" stroke="#3D2D32" stroke-width="6"/><g class="sketch" transform="translate(860 530) scale(.9) translate(-860 -530)">
+      <circle cx="860" cy="346" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M829 337 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="860" y="356" text-anchor="middle" class="face">:|</text>
+      <path d="M860 382 C868 420 854 464 860 494" stroke="#302A26" stroke-width="5" fill="#B34E68"/>
+      <path d="M826 391 Q802 438 786 455" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M894 391 Q805 424 796 450" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M856 492 L826 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M864 492 L894 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M812 530 h30 M878 530 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      <rect x="793" y="412" width="54" height="68" rx="5" fill="#fff" stroke="#302A26" stroke-width="3" transform="rotate(-7 815 446)"/>
+    </g><g transform="rotate(-5 255.0 249.0)" class="sketch"><rect x="180" y="205" width="150" height="88" rx="5" fill="#F0C5CF" stroke="#302A26" stroke-width="3"/><path d="M302 205 l28 28 h-28z" fill="#fff" opacity=".6"/><text x="255.0" y="257.0" class="sticky" text-anchor="middle">以前：把活做完</text></g><g transform="rotate(3 575.0 219.0)" class="sketch"><rect x="500" y="175" width="150" height="88" rx="5" fill="#FFE4A8" stroke="#302A26" stroke-width="3"/><path d="M622 175 l28 28 h-28z" fill="#fff" opacity=".6"/><text x="575.0" y="227.0" class="sticky" text-anchor="middle">现在：把结果做好</text></g><g transform="rotate(-3 915.0 279.0)" class="sketch"><rect x="840" y="235" width="150" height="88" rx="5" fill="#D7EFE5" stroke="#302A26" stroke-width="3"/><path d="M962 235 l28 28 h-28z" fill="#fff" opacity=".6"/><text x="915.0" y="287.0" class="sticky" text-anchor="middle">责任开始生长</text></g><g class="sketch"><rect x="650" y="120" width="320" height="76" rx="25" fill="#fff" stroke="#B34E68" stroke-width="3"/><path d="M934 188 l22 28 l-42 -20" stroke="#B34E68" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/><text x="810.0" y="167" class="bubble" text-anchor="middle">接住的不只是任务，还有结果</text></g></g>
+  <text x="1120" y="625" text-anchor="end" class="subtitle" fill="#B34E68">日拱一卒 · 功不唐捐</text>
+  <rect width="1200" height="675" rx="28" fill="url(#grain)" pointer-events="none"/>
 </svg>

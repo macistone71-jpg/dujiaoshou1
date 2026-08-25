@@ -1,42 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">四个场景</title>
-  <desc id="desc">竞品、访谈、文档与数据整理</desc>
+  <title id="title">四个高频场景</title><desc id="desc">机器人搬走资料堆，小何终于抬头思考</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#EEF5FF"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#183B68" flood-opacity=".10"/></filter>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="2" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6"/></filter>
+    <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="4" cy="7" r="1" fill="#293747" opacity=".12"/><circle cx="20" cy="18" r=".8" fill="#3D72B4" opacity=".12"/><path d="M10 24 l3 -1" stroke="#293747" stroke-width=".7" opacity=".1"/></pattern>
   </defs>
   <style>
-    .kicker,.num{font:700 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:2px}
-    .title{font:800 54px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .subtitle{font:400 24px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .label{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .foot{font:500 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:1px}
+    .sketch{filter:url(#rough)}
+    .kicker{font:700 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:3px}
+    .title{font:700 42px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .subtitle{font:400 19px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .note{font:500 20px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#293747}
+    .sticky{font:700 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#293747}
+    .bubble{font:600 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#293747}
+    .tiny{font:600 15px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#fff}
+    .face{font:700 18px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#293747}
+    .bigq{font:800 82px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#3D72B4}
   </style>
-  <rect width="1200" height="675" rx="36" fill="url(#bg)"/>
-  <circle cx="1070" cy="76" r="170" fill="#B6D1F3" fill-opacity=".45"/>
-  <circle cx="1130" cy="620" r="245" fill="#3568A8" fill-opacity=".07"/>
-  <path d="M0 550 C220 475 320 655 560 575 C770 505 870 595 1200 485 V675 H0Z" fill="#B6D1F3" fill-opacity=".22"/>
-  <g filter="url(#shadow)"><rect x="72" y="72" width="1056" height="531" rx="32" fill="#FFFFFF" fill-opacity=".48"/></g>
-  <text x="116" y="142" class="kicker" fill="#3568A8">何庆丰 · 产品思考  /  A05—02</text>
-  <text x="116" y="252" class="title" fill="#183B68">四个场景</text>
-  <text x="116" y="326" class="subtitle" fill="#183B68" opacity=".72">竞品、访谈、文档与数据整理</text>
-  <rect x="116" y="428" width="92" height="8" rx="4" fill="#3568A8"/>
-  <text x="116" y="500" class="foot" fill="#183B68" opacity=".65">日拱一卒 · 功不唐捐</text>
-  <g><g>
-          <rect x="705" y="246" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="281" r="23" fill="#3568A8"/>
-          <text x="748" y="288" text-anchor="middle" class="num">01</text>
-          <text x="788" y="289" class="label">竞品分析</text>
-        </g><g>
-          <rect x="705" y="338" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="373" r="23" fill="#3568A8"/>
-          <text x="748" y="380" text-anchor="middle" class="num">02</text>
-          <text x="788" y="381" class="label">访谈纪要</text>
-        </g><g>
-          <rect x="705" y="430" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="465" r="23" fill="#3568A8"/>
-          <text x="748" y="472" text-anchor="middle" class="num">03</text>
-          <text x="788" y="473" class="label">文档初稿</text>
-        </g></g>
-  <path d="M640 190 V500" stroke="#3568A8" stroke-width="2" stroke-dasharray="6 10" opacity=".25"/>
+  <rect width="1200" height="675" rx="28" fill="#F3F8FF"/>
+  <g opacity=".5"><path d="M30 115 Q260 90 500 112 T1170 100" stroke="#C8DCF5" stroke-width="3" fill="none"/><path d="M45 585 Q350 610 650 585 T1160 595" stroke="#C8DCF5" stroke-width="3" fill="none"/></g>
+  <path d="M24 30 Q310 20 590 28 T1174 25 L1180 640 Q910 654 610 646 T25 650Z" fill="none" stroke="#293747" stroke-width="3" stroke-dasharray="9 7" opacity=".45" class="sketch"/>
+  <text x="68" y="70" class="kicker" fill="#3D72B4">小何的产品手记  ·  05/02</text>
+  <text x="68" y="123" class="title" fill="#293747">四个高频场景</text>
+  <text x="68" y="156" class="subtitle" fill="#293747" opacity=".72">机器人搬走资料堆，小何终于抬头思考</text>
+  <g transform="translate(0 32)"><path d="M90 535 Q260 522 430 536 T770 534 T1110 538" stroke="#293747" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 10"/><g class="sketch">
+      <rect x="216" y="338" width="108" height="92" rx="24" fill="#EAF3FF" stroke="#302A26" stroke-width="4"/>
+      <path d="M270 338 v-30 m-10 0 h20" stroke="#302A26" stroke-width="4"/>
+      <circle cx="246" cy="379" r="8" fill="#D97857"/><circle cx="294" cy="379" r="8" fill="#D97857"/>
+      <path d="M248 404 q22 18 44 0" stroke="#302A26" stroke-width="3" fill="none"/>
+      <rect x="228" y="434" width="84" height="74" rx="15" fill="#D97857" opacity=".82" stroke="#302A26" stroke-width="4"/>
+      <path d="M228 454 l-42 -25 m126 25 l42 -25 M250 510 l-18 24 m58 -24 18 24" stroke="#302A26" stroke-width="5"/>
+    </g><rect x="380" y="460" width="105" height="55" fill="#C8DCF5" stroke="#293747" stroke-width="4" class="sketch"/><rect x="505" y="415" width="105" height="100" fill="#FFE4A8" stroke="#293747" stroke-width="4" class="sketch"/><rect x="630" y="370" width="105" height="145" fill="#D7EFE5" stroke="#293747" stroke-width="4" class="sketch"/><rect x="755" y="460" width="105" height="55" fill="#C8DCF5" stroke="#293747" stroke-width="4" class="sketch"/><g class="sketch" transform="translate(935 530) scale(.8) translate(-935 -530)">
+      <circle cx="935" cy="346" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M904 337 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="935" y="356" text-anchor="middle" class="face">:)</text>
+      <path d="M935 382 C943 420 929 464 935 494" stroke="#302A26" stroke-width="5" fill="#3D72B4"/>
+      <path d="M901 391 Q877 438 861 455" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M969 391 Q880 424 871 450" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M931 492 L901 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M939 492 L969 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M887 530 h30 M953 530 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      <rect x="868" y="412" width="54" height="68" rx="5" fill="#fff" stroke="#302A26" stroke-width="3" transform="rotate(-7 890 446)"/>
+    </g><text x="435" y="445" class="sticky" text-anchor="middle">竞品资料</text><text x="575" y="400" class="sticky" text-anchor="middle">访谈纪要</text><text x="700" y="355" class="sticky" text-anchor="middle">数据归类</text><g class="sketch"><rect x="735" y="130" width="300" height="76" rx="25" fill="#fff" stroke="#3D72B4" stroke-width="3"/><path d="M999 198 l22 28 l-42 -20" stroke="#3D72B4" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/><text x="885.0" y="177" class="bubble" text-anchor="middle">脏活搬走后，我终于能抬头想方向</text></g></g>
+  <text x="1120" y="625" text-anchor="end" class="subtitle" fill="#3D72B4">日拱一卒 · 功不唐捐</text>
+  <rect width="1200" height="675" rx="28" fill="url(#grain)" pointer-events="none"/>
 </svg>

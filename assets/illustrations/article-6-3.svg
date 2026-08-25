@@ -1,42 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">异常流程</title>
-  <desc id="desc">正常流程之外，才是真正的产品功力</desc>
+  <title id="title">异常流程</title><desc id="desc">评审会上，三个问题把“小功能”问出了深水区</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF0F3"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#552331" flood-opacity=".10"/></filter>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="3" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6"/></filter>
+    <pattern id="grain" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="4" cy="7" r="1" fill="#3D2D32" opacity=".12"/><circle cx="20" cy="18" r=".8" fill="#B34E68" opacity=".12"/><path d="M10 24 l3 -1" stroke="#3D2D32" stroke-width=".7" opacity=".1"/></pattern>
   </defs>
   <style>
-    .kicker,.num{font:700 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:2px}
-    .title{font:800 54px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .subtitle{font:400 24px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .label{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
-    .foot{font:500 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:1px}
+    .sketch{filter:url(#rough)}
+    .kicker{font:700 16px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:3px}
+    .title{font:700 42px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .subtitle{font:400 19px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif}
+    .note{font:500 20px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#3D2D32}
+    .sticky{font:700 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#3D2D32}
+    .bubble{font:600 18px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#3D2D32}
+    .tiny{font:600 15px "Kaiti SC",STKaiti,"KaiTi","PingFang SC",sans-serif;fill:#fff}
+    .face{font:700 18px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#3D2D32}
+    .bigq{font:800 82px "Kaiti SC",STKaiti,"KaiTi",sans-serif;fill:#B34E68}
   </style>
-  <rect width="1200" height="675" rx="36" fill="url(#bg)"/>
-  <circle cx="1070" cy="76" r="170" fill="#EDBAC5" fill-opacity=".45"/>
-  <circle cx="1130" cy="620" r="245" fill="#A3475B" fill-opacity=".07"/>
-  <path d="M0 550 C220 475 320 655 560 575 C770 505 870 595 1200 485 V675 H0Z" fill="#EDBAC5" fill-opacity=".22"/>
-  <g filter="url(#shadow)"><rect x="72" y="72" width="1056" height="531" rx="32" fill="#FFFFFF" fill-opacity=".48"/></g>
-  <text x="116" y="142" class="kicker" fill="#A3475B">何庆丰 · 产品思考  /  A06—03</text>
-  <text x="116" y="252" class="title" fill="#552331">异常流程</text>
-  <text x="116" y="326" class="subtitle" fill="#552331" opacity=".72">正常流程之外，才是真正的产品功力</text>
-  <rect x="116" y="428" width="92" height="8" rx="4" fill="#A3475B"/>
-  <text x="116" y="500" class="foot" fill="#552331" opacity=".65">日拱一卒 · 功不唐捐</text>
-  <g><g>
-          <rect x="705" y="246" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="281" r="23" fill="#A3475B"/>
-          <text x="748" y="288" text-anchor="middle" class="num">01</text>
-          <text x="788" y="289" class="label">断网</text>
-        </g><g>
-          <rect x="705" y="338" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="373" r="23" fill="#A3475B"/>
-          <text x="748" y="380" text-anchor="middle" class="num">02</text>
-          <text x="788" y="381" class="label">并发</text>
-        </g><g>
-          <rect x="705" y="430" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
-          <circle cx="748" cy="465" r="23" fill="#A3475B"/>
-          <text x="748" y="472" text-anchor="middle" class="num">03</text>
-          <text x="788" y="473" class="label">误删</text>
-        </g></g>
-  <path d="M640 190 V500" stroke="#A3475B" stroke-width="2" stroke-dasharray="6 10" opacity=".25"/>
+  <rect width="1200" height="675" rx="28" fill="#FFF5F7"/>
+  <g opacity=".5"><path d="M30 115 Q260 90 500 112 T1170 100" stroke="#F0C5CF" stroke-width="3" fill="none"/><path d="M45 585 Q350 610 650 585 T1160 595" stroke="#F0C5CF" stroke-width="3" fill="none"/></g>
+  <path d="M24 30 Q310 20 590 28 T1174 25 L1180 640 Q910 654 610 646 T25 650Z" fill="none" stroke="#3D2D32" stroke-width="3" stroke-dasharray="9 7" opacity=".45" class="sketch"/>
+  <text x="68" y="70" class="kicker" fill="#B34E68">小何的产品手记  ·  06/03</text>
+  <text x="68" y="123" class="title" fill="#3D2D32">异常流程</text>
+  <text x="68" y="156" class="subtitle" fill="#3D2D32" opacity=".72">评审会上，三个问题把“小功能”问出了深水区</text>
+  <g transform="translate(0 32)"><path d="M90 535 Q260 522 430 536 T770 534 T1110 538" stroke="#3D2D32" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 10"/><g class="sketch" transform="translate(260 530) scale(.85) translate(-260 -530)">
+      <circle cx="260" cy="346" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M229 337 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="260" y="356" text-anchor="middle" class="face">:|</text>
+      <path d="M260 382 C252 420 266 464 260 494" stroke="#302A26" stroke-width="5" fill="#B34E68"/>
+      <path d="M226 391 Q202 438 186 455" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M294 391 Q315 424 324 450" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M256 492 L226 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M264 492 L294 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M212 530 h30 M278 530 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      <rect x="283" y="412" width="54" height="68" rx="5" fill="#fff" stroke="#302A26" stroke-width="3" transform="rotate(7 305 446)"/>
+    </g><rect x="420" y="395" width="430" height="110" rx="14" fill="#fff" stroke="#3D2D32" stroke-width="4"/><g class="sketch" transform="translate(930 530) scale(.75) translate(-930 -530)">
+      <circle cx="930" cy="346" r="34" fill="#FFD9BC" stroke="#302A26" stroke-width="4"/>
+      <path d="M899 337 q30 -45 62 0 q-13 -10 -20 -26 q-20 18 -42 20" fill="#43352F" stroke="#302A26" stroke-width="3"/>
+      <text x="930" y="356" text-anchor="middle" class="face">:|</text>
+      <path d="M930 382 C938 420 924 464 930 494" stroke="#302A26" stroke-width="5" fill="#507A70"/>
+      <path d="M896 391 Q872 438 856 455" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M964 391 Q875 424 866 450" stroke="#302A26" stroke-width="5" fill="none"/>
+      <path d="M926 492 L896 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M934 492 L964 530" stroke="#302A26" stroke-width="6"/>
+      <path d="M882 530 h30 M948 530 h30" stroke="#302A26" stroke-width="6" stroke-linecap="round"/>
+      <path d="M905 440 L858 402" stroke="#507A70" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g class="sketch"><rect x="380" y="130" width="230" height="76" rx="25" fill="#fff" stroke="#B34E68" stroke-width="3"/><path d="M416 198 l-22 28 l42 -20" stroke="#B34E68" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/><text x="495.0" y="177" class="bubble" text-anchor="middle">保存多久？</text></g><g class="sketch"><rect x="620" y="205" width="230" height="76" rx="25" fill="#fff" stroke="#507A70" stroke-width="3"/><path d="M814 273 l22 28 l-42 -20" stroke="#507A70" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/><text x="735.0" y="252" class="bubble" text-anchor="middle">同时编辑呢？</text></g><g class="sketch"><rect x="430" y="290" width="250" height="76" rx="25" fill="#fff" stroke="#B34E68" stroke-width="3"/><path d="M466 358 l-22 28 l42 -20" stroke="#B34E68" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"/><text x="555.0" y="337" class="bubble" text-anchor="middle">误删怎么办？</text></g><text x="635" y="450" class="sticky" text-anchor="middle">订单备注功能</text><text x="775" y="470" class="bigq">?</text></g>
+  <text x="1120" y="625" text-anchor="end" class="subtitle" fill="#B34E68">日拱一卒 · 功不唐捐</text>
+  <rect width="1200" height="675" rx="28" fill="url(#grain)" pointer-events="none"/>
 </svg>
