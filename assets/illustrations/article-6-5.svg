@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">负责的闭环</title>
+  <desc id="desc">调研 → 交付 → 验收 → 数据 → 复盘</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF0F3"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#552331" flood-opacity=".10"/></filter>
+  </defs>
+  <style>
+    .kicker,.num{font:700 18px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:2px}
+    .title{font:800 54px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    .subtitle{font:400 24px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    .label{font:700 25px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    .foot{font:500 17px -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:1px}
+  </style>
+  <rect width="1200" height="675" rx="36" fill="url(#bg)"/>
+  <circle cx="1070" cy="76" r="170" fill="#EDBAC5" fill-opacity=".45"/>
+  <circle cx="1130" cy="620" r="245" fill="#A3475B" fill-opacity=".07"/>
+  <path d="M0 550 C220 475 320 655 560 575 C770 505 870 595 1200 485 V675 H0Z" fill="#EDBAC5" fill-opacity=".22"/>
+  <g filter="url(#shadow)"><rect x="72" y="72" width="1056" height="531" rx="32" fill="#FFFFFF" fill-opacity=".48"/></g>
+  <text x="116" y="142" class="kicker" fill="#A3475B">何庆丰 · 产品思考  /  A06—05</text>
+  <text x="116" y="252" class="title" fill="#552331">负责的闭环</text>
+  <text x="116" y="326" class="subtitle" fill="#552331" opacity=".72">调研 → 交付 → 验收 → 数据 </text><text x="116" y="365" class="subtitle" fill="#552331" opacity=".72">→ 复盘</text>
+  <rect x="116" y="428" width="92" height="8" rx="4" fill="#A3475B"/>
+  <text x="116" y="500" class="foot" fill="#552331" opacity=".65">日拱一卒 · 功不唐捐</text>
+  <g><g>
+          <rect x="705" y="246" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
+          <circle cx="748" cy="281" r="23" fill="#A3475B"/>
+          <text x="748" y="288" text-anchor="middle" class="num">01</text>
+          <text x="788" y="289" class="label">敢拍板</text>
+        </g><g>
+          <rect x="705" y="338" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
+          <circle cx="748" cy="373" r="23" fill="#A3475B"/>
+          <text x="748" y="380" text-anchor="middle" class="num">02</text>
+          <text x="788" y="381" class="label">盯结果</text>
+        </g><g>
+          <rect x="705" y="430" width="355" height="70" rx="20" fill="#FFFFFF" fill-opacity=".82"/>
+          <circle cx="748" cy="465" r="23" fill="#A3475B"/>
+          <text x="748" y="472" text-anchor="middle" class="num">03</text>
+          <text x="788" y="473" class="label">持续迭代</text>
+        </g></g>
+  <path d="M640 190 V500" stroke="#A3475B" stroke-width="2" stroke-dasharray="6 10" opacity=".25"/>
+</svg>

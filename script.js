@@ -4,6 +4,7 @@
 const cfg = window.SITE_CONFIG || {};
 const POSTS = window.POSTS || [];
 const PROJECTS = window.PROJECTS || [];
+const ARTICLE_VISUALS = window.ARTICLE_VISUALS || [];
 
 function escapeHtml(str) {
   return String(str ?? "")
@@ -68,21 +69,33 @@ function renderHighlights() {
 renderHighlights();
 
 // ---- 文章列表 ----
+function readingMinutes(post) {
+  const chars = (post.content || []).reduce((sum, block) => {
+    const text = block.p || block.h2 || block.quote || (block.list || []).join("");
+    return sum + String(text || "").length;
+  }, 0);
+  return Math.max(1, Math.ceil(chars / 450));
+}
+
 function renderPosts() {
   const list = document.getElementById("posts-list");
   if (!list || !Array.isArray(POSTS)) return;
   list.innerHTML = POSTS
-    .map(
-      (p, i) => `
+    .map((p, i) => {
+      const cover = ARTICLE_VISUALS[i]?.[0];
+      return `
       <article class="post-item" data-search="${escapeHtml((p.title + " " + p.excerpt).toLowerCase())}">
-        <h3 class="post-title"><a href="#" data-post="${i}">${escapeHtml(p.title)}</a></h3>
-        <div class="post-meta">
-          <span>${escapeHtml(p.date)}</span> · <span class="post-cat">${escapeHtml(p.category)}</span>
+        ${cover ? `<a class="post-cover-link" href="#post-${i + 1}" data-post="${i}" aria-label="阅读：${escapeHtml(p.title)}"><img class="post-cover" src="${escapeHtml(cover.src)}" alt="" loading="lazy" /></a>` : ""}
+        <div class="post-summary">
+          <h3 class="post-title"><a href="#post-${i + 1}" data-post="${i}">${escapeHtml(p.title)}</a></h3>
+          <div class="post-meta">
+            <span>${escapeHtml(p.date)}</span> · <span class="post-cat">${escapeHtml(p.category)}</span> · <span>约 ${readingMinutes(p)} 分钟</span>
+          </div>
+          <p class="post-excerpt">${escapeHtml(p.excerpt)}</p>
+          <a class="post-more" href="#post-${i + 1}" data-post="${i}">继续读 →</a>
         </div>
-        <p class="post-excerpt">${escapeHtml(p.excerpt)}</p>
-        <a class="post-more" href="#" data-post="${i}">继续读 →</a>
-      </article>`
-    )
+      </article>`;
+    })
     .join("");
 }
 renderPosts();
@@ -164,7 +177,7 @@ function renderRecent() {
   ul.innerHTML = POSTS
     .slice(0, 6)
     .map(
-      (p, i) => `<li><a href="#" data-post="${i}">${escapeHtml(p.title)}</a></li>`
+      (p, i) => `<li><a href="#post-${i + 1}" data-post="${i}">${escapeHtml(p.title)}</a></li>`
     )
     .join("");
 }
@@ -233,33 +246,96 @@ function renderBlocks(blocks) {
     .join("");
 }
 
+function renderFigure(visual, extraClass = "") {
+  if (!visual) return "";
+  return `<figure class="article-figure ${extraClass}">
+    <img src="${escapeHtml(visual.src)}" alt="${escapeHtml(visual.alt)}" loading="lazy" />
+    <figcaption>${escapeHtml(visual.caption)}</figcaption>
+  </figure>`;
+}
+
+function renderArticleBlocks(blocks, visuals) {
+  const inlineVisuals = (visuals || []).slice(1);
+  const slots = new Map();
+  inlineVisuals.forEach((visual, index) => {
+    let slot = Math.max(1, Math.round(((index + 1) / (inlineVisuals.length + 1)) * blocks.length));
+    while (slots.has(slot) && slot < blocks.length - 1) slot += 1;
+    slots.set(slot, visual);
+  });
+  return (blocks || []).map((block, index) => {
+    const figure = slots.has(index + 1) ? renderFigure(slots.get(index + 1)) : "";
+    return renderBlocks([block]) + figure;
+  }).join("");
+}
+
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
+const modalPanel = modal?.querySelector(".modal-panel");
+const readingProgress = document.getElementById("reading-progress");
+let modalReturnHash = "#writing";
+let activePostIndex = null;
+
+function updateReadingProgress() {
+  if (!modalPanel || !readingProgress) return;
+  const available = modalPanel.scrollHeight - modalPanel.clientHeight;
+  const progress = available > 0 ? (modalPanel.scrollTop / available) * 100 : 100;
+  readingProgress.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+}
+modalPanel?.addEventListener("scroll", updateReadingProgress, { passive: true });
 
 function openModal(html) {
   modalBody.innerHTML = html;
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  const panel = modal.querySelector(".modal-panel");
-  if (panel) panel.scrollTop = 0;
+  if (modalPanel) {
+    modalPanel.scrollTop = 0;
+    modalPanel.focus();
+  }
+  updateReadingProgress();
 }
 
-function closeModal() {
+function closeModal({ restoreHash = true } = {}) {
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  activePostIndex = null;
+  document.title = `${cfg.name || "个人网站"} · ${cfg.slogan || ""}`.trim();
+  if (restoreHash && location.hash.startsWith("#post-")) {
+    history.replaceState(null, "", modalReturnHash || "#writing");
+  }
 }
 
-function openPost(i) {
+function openPost(i, { updateUrl = true } = {}) {
   const p = POSTS[i];
   if (!p) return;
+  if (!location.hash.startsWith("#post-")) modalReturnHash = location.hash || "#writing";
+  activePostIndex = i;
+  const visuals = ARTICLE_VISUALS[i] || [];
+  document.title = `${p.title} · ${cfg.name || ""}`;
+  if (updateUrl && location.hash !== `#post-${i + 1}`) {
+    history.pushState({ post: i }, "", `#post-${i + 1}`);
+  }
   openModal(`
-    <div class="article-head">
-      <div class="article-meta"><span>${escapeHtml(p.date)}</span> · <span class="post-cat">${escapeHtml(p.category)}</span></div>
-      <h1 class="article-title">${escapeHtml(p.title)}</h1>
-    </div>
-    <div class="article-content">${renderBlocks(p.content)}</div>
+    <article class="wechat-article">
+      <header class="article-head">
+        <div class="article-label">${escapeHtml(p.category)} · 产品思考</div>
+        <h1 class="article-title" id="article-dialog-title">${escapeHtml(p.title)}</h1>
+        <div class="article-byline">
+          <span class="article-author">${escapeHtml(cfg.name || "何庆丰")}</span>
+          <span>${escapeHtml(p.date)}</span>
+          <span>约 ${readingMinutes(p)} 分钟阅读</span>
+        </div>
+      </header>
+      ${renderFigure(visuals[0], "article-hero")}
+      <div class="article-lead">${escapeHtml(p.excerpt)}</div>
+      <div class="article-content">${renderArticleBlocks(p.content, visuals)}</div>
+      <footer class="article-end">
+        <span>END</span>
+        <strong>${escapeHtml(cfg.name || "何庆丰")}</strong>
+        <p>${escapeHtml(cfg.slogan || "日拱一卒，功不唐捐")}</p>
+      </footer>
+    </article>
   `);
 }
 
@@ -298,6 +374,17 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
+
+function openPostFromHash() {
+  const match = location.hash.match(/^#post-(\d+)$/);
+  if (match) {
+    openPost(Number(match[1]) - 1, { updateUrl: false });
+  } else if (modal?.classList.contains("open") && activePostIndex !== null) {
+    closeModal({ restoreHash: false });
+  }
+}
+window.addEventListener("popstate", openPostFromHash);
+openPostFromHash();
 
 // ---- 移动端菜单 ----
 const menuToggle = document.getElementById("menu-toggle");

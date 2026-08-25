@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>何庆丰 · 日拱一卒</title>
-  <meta name="description" content="何庆丰的个人网站：写作、产品与代码。" />
+  <meta name="description" content="何庆丰的个人网站：记录产品思考、AI 实践与项目复盘。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="何庆丰 · 产品思考与实践" />
+  <meta property="og:description" content="记录产品思考、AI 实践与项目复盘。" />
+  <meta name="theme-color" content="#d26911" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -126,8 +130,9 @@
   <!-- 阅读弹窗（文章 / 项目详情） -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel" role="dialog" aria-modal="true">
-      <button class="modal-close" data-close aria-label="关闭">×</button>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="article-dialog-title" tabindex="-1">
+      <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+      <button class="modal-close" data-close aria-label="关闭文章">×</button>
       <div class="modal-body" id="modal-body"></div>
     </div>
   </div>
@@ -139,6 +144,7 @@
   <script src="posts4.js"></script>
   <script src="posts5.js"></script>
   <script src="posts6.js"></script>
+  <script src="visuals.js"></script>
   <script src="projects1.js"></script>
   <script src="projects2.js"></script>
   <script src="projects3.js"></script>
