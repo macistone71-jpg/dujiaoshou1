@@ -16,6 +16,38 @@ window.SITE_CONFIG = {
     url: "https://mp.weixin.qq.com/s/GpXb11O-Rpft1lFoCflEKQ",
   },
 
+  // ---- 内容平台 ----
+  // 在首页、侧边栏和页脚统一生成快捷入口。
+  platforms: [
+    {
+      name: "小红书",
+      handle: "千秋",
+      desc: "产品、AI 与日常创作分享",
+      action: "查看个人主页",
+      mark: "红",
+      tone: "xiaohongshu",
+      url: "https://www.xiaohongshu.com/user/profile/5c5cd3d9000000001d03d04d",
+    },
+    {
+      name: "人人都是产品经理",
+      handle: "千秋折桂向轩辕",
+      desc: "产品思考与 AI 实践文章",
+      action: "查看作者主页",
+      mark: "PM",
+      tone: "woshipm",
+      url: "https://www.woshipm.com/u/1685123",
+    },
+    {
+      name: "少数派",
+      handle: "@qrrzrkht",
+      desc: "效率、创作与数字生活分享",
+      action: "查看个人主页",
+      mark: "少",
+      tone: "sspai",
+      url: "https://sspai.com/u/qrrzrkht/updates",
+    },
+  ],
+
   // ---- 关于我 ----
   about: [
     "何庆丰，做了两年产品经理。",

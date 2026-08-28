@@ -207,6 +207,126 @@ a:hover {
   color: var(--accent);
 }
 
+.block-note {
+  color: var(--text-light);
+  font-size: 0.86rem;
+}
+
+/* ===== 内容平台 ===== */
+.platform-block {
+  scroll-margin-top: 82px;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.platform-card {
+  --platform-color: var(--accent);
+  --platform-soft: #fff7ef;
+  position: relative;
+  display: block;
+  min-height: 220px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(155deg, var(--platform-soft), #fff 58%);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.platform-card::after {
+  content: "";
+  position: absolute;
+  right: -32px;
+  bottom: -48px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: var(--platform-color);
+  opacity: 0.055;
+}
+
+.platform-card:hover {
+  color: var(--text);
+  border-color: var(--platform-color);
+  box-shadow: 0 12px 28px rgba(34, 34, 34, 0.07);
+  transform: translateY(-3px);
+}
+
+.platform-card[data-platform="xiaohongshu"] {
+  --platform-color: #ff2442;
+  --platform-soft: #fff4f6;
+}
+
+.platform-card[data-platform="woshipm"] {
+  --platform-color: #f06a2a;
+  --platform-soft: #fff6f1;
+}
+
+.platform-card[data-platform="sspai"] {
+  --platform-color: #d71920;
+  --platform-soft: #fff4f4;
+}
+
+.platform-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.platform-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 10px;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--platform-color);
+  font-size: 0.84rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+
+.platform-arrow {
+  color: var(--platform-color);
+  font-size: 1.1rem;
+}
+
+.platform-card h3 {
+  margin-bottom: 2px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.platform-handle {
+  margin-bottom: 12px;
+  color: var(--platform-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.platform-desc {
+  max-width: 20em;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.platform-action {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  z-index: 1;
+  color: var(--platform-color);
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
 /* ===== 文章列表 ===== */
 .post-item {
   display: grid;
@@ -526,6 +646,12 @@ a:hover {
   color: var(--text-light);
 }
 
+.utility-links {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
 /* ===== 页脚 ===== */
 .footer {
   border-top: 1px solid var(--border);
@@ -535,6 +661,27 @@ a:hover {
 
 .footer-inner {
   text-align: center;
+}
+
+.footer-platforms {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footer-platforms a {
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.footer-platforms a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .footer-links {
@@ -569,6 +716,10 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .platform-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .nav {
     position: absolute;
     top: 60px;
@@ -592,6 +743,26 @@ a:hover {
 
   .post-item {
     grid-template-columns: 180px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .platform-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-card {
+    min-height: 200px;
+  }
+
+  .block-note {
+    display: none;
+  }
+
+  .footer-links,
+  .footer-platforms {
+    gap: 10px 14px;
+    flex-wrap: wrap;
   }
 }
 

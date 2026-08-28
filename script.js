@@ -73,6 +73,55 @@ function renderHighlights() {
 }
 renderHighlights();
 
+// ---- 内容平台 ----
+function renderPlatforms() {
+  const platforms = Array.isArray(cfg.platforms) ? cfg.platforms : [];
+  const grid = document.getElementById("platforms-grid");
+  const sidebar = document.getElementById("platform-links");
+  const footer = document.getElementById("footer-platforms");
+
+  if (grid) {
+    grid.innerHTML = platforms
+      .map(
+        (platform) => `
+        <a class="platform-card" data-platform="${escapeHtml(platform.tone || "default")}" href="${escapeHtml(platform.url || "#")}" target="_blank" rel="noopener noreferrer">
+          <div class="platform-card-head">
+            <span class="platform-mark" aria-hidden="true">${escapeHtml(platform.mark || "↗")}</span>
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>${escapeHtml(platform.name)}</h3>
+          <p class="platform-handle">${escapeHtml(platform.handle)}</p>
+          <p class="platform-desc">${escapeHtml(platform.desc)}</p>
+          <span class="platform-action">${escapeHtml(platform.action || "前往主页")}</span>
+        </a>`
+      )
+      .join("");
+  }
+
+  if (sidebar) {
+    sidebar.innerHTML = platforms
+      .map(
+        (platform) => `
+        <li>
+          <a href="${escapeHtml(platform.url || "#")}" target="_blank" rel="noopener noreferrer">
+            <span>${escapeHtml(platform.name)}</span><span class="count">↗</span>
+          </a>
+        </li>`
+      )
+      .join("");
+  }
+
+  if (footer) {
+    footer.innerHTML = platforms
+      .map(
+        (platform) =>
+          `<a href="${escapeHtml(platform.url || "#")}" target="_blank" rel="noopener noreferrer">${escapeHtml(platform.name)} ↗</a>`
+      )
+      .join("");
+  }
+}
+renderPlatforms();
+
 // ---- 文章列表 ----
 function readingMinutes(post) {
   const chars = (post.content || []).reduce((sum, block) => {

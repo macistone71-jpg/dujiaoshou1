@@ -24,6 +24,7 @@
         <a href="#writing">文章</a>
         <a href="#projects">项目</a>
         <a href="#skills">Skill</a>
+        <a href="#platforms">平台</a>
         <a href="#about">关于</a>
         <a href="#" target="_blank" rel="noopener" class="wechat-link nav-wechat">进入公众号 ↗</a>
         <a href="#" target="_blank" rel="noopener" class="github-link">GitHub ↗</a>
@@ -40,6 +41,15 @@
     <main class="main">
       <!-- 高亮卡片 -->
       <div class="highlights" id="highlights-grid"></div>
+
+      <!-- 内容平台 -->
+      <section class="block platform-block" id="platforms">
+        <div class="block-head">
+          <h2>内容平台</h2>
+          <span class="block-note">一站直达我的创作主页</span>
+        </div>
+        <div class="platform-grid" id="platforms-grid"></div>
+      </section>
 
       <!-- 重点项目 -->
       <section class="block" id="featured">
@@ -111,10 +121,11 @@
       </div>
 
       <div class="widget">
-        <h3>外站</h3>
-        <ul class="link-list">
-          <li><a href="#" target="_blank" rel="noopener" class="wechat-link">公众号</a></li>
-          <li><a href="#" target="_blank" rel="noopener" class="github-link">GitHub</a></li>
+        <h3>我的平台</h3>
+        <ul class="link-list" id="platform-links"></ul>
+        <ul class="link-list utility-links">
+          <li><a href="#" target="_blank" rel="noopener" class="wechat-link"><span>公众号</span><span class="count">↗</span></a></li>
+          <li><a href="#" target="_blank" rel="noopener" class="github-link"><span>GitHub</span><span class="count">↗</span></a></li>
           <li><a href="mailto:you@example.com" id="contact-email">邮箱</a></li>
         </ul>
       </div>
@@ -124,6 +135,7 @@
   <!-- 页脚 -->
   <footer class="footer">
     <div class="container footer-inner">
+      <div class="footer-platforms" id="footer-platforms" aria-label="内容平台"></div>
       <div class="footer-links">
         <a href="#" target="_blank" rel="noopener" class="wechat-link">公众号</a>
         <a href="#" target="_blank" rel="noopener" class="github-link">GitHub</a>
