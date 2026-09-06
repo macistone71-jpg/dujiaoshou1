@@ -3,10 +3,12 @@
 :root {
   --bg: #fdfdfd;
   --text: #222222;
-  --text-muted: #666666;
-  --text-light: #999999;
+  --text-muted: #595959;
+  --text-light: #666666;
   --accent: #d26911; /* 强调橙 */
-  --border: #ebebeb;
+  --border: rgba(132, 92, 53, 0.16);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(253, 253, 253, 0.84);
   --max-width: 1040px;
 }
 
@@ -18,16 +20,96 @@
 
 html {
   scroll-behavior: smooth;
+  background: #fbf8f3;
 }
 
 body {
+  min-height: 100dvh;
   font-family: -apple-system, "system-ui", "SF Pro Text", "PingFang SC",
     "Hiragino Sans GB", "Helvetica Neue", "Microsoft YaHei",
     "WenQuanYi Micro Hei", Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   font-size: 15px;
   line-height: 1.75;
+}
+
+/* ===== 动态流光背景 =====
+   以暖橙与晨光蓝呼应个人品牌，动效只做环境层，不抢正文。 */
+.aurora-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 88%, rgba(245, 158, 11, 0.1), transparent 34%),
+    linear-gradient(145deg, #fffdf9 0%, #fbf8f3 48%, #f8fafc 100%);
+}
+
+.aurora-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  background-image:
+    repeating-linear-gradient(
+      102deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.92) 7%,
+      transparent 10%,
+      transparent 12%,
+      rgba(255, 255, 255, 0.92) 16%
+    ),
+    repeating-linear-gradient(
+      102deg,
+      #f59e0b 10%,
+      #fb923c 15%,
+      #fdba74 20%,
+      #93c5fd 25%,
+      #f97316 30%
+    );
+  background-position: 50% 50%, 50% 50%;
+  background-size: 300% 200%, 220% 120%;
+  filter: blur(24px) saturate(125%);
+  opacity: 0.22;
+  mask-image: radial-gradient(ellipse at 92% 0%, #000 8%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 92% 0%, #000 8%, transparent 70%);
+  animation: aurora-drift 60s linear infinite;
+  will-change: background-position;
+}
+
+.aurora-backdrop::after {
+  content: "";
+  position: absolute;
+  left: -16vw;
+  bottom: -28vh;
+  width: 72vw;
+  height: 72vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.2) 0%, rgba(253, 186, 116, 0.08) 44%, transparent 70%);
+  filter: blur(20px);
+  animation: aurora-breathe 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes aurora-drift {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+@keyframes aurora-breathe {
+  from {
+    opacity: 0.55;
+    transform: translate3d(-3%, 2%, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(12%, -8%, 0) scale(1.08);
+  }
 }
 
 a {
@@ -54,7 +136,9 @@ a:hover {
 /* ===== 顶部 ===== */
 .header {
   border-bottom: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--surface-strong);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  backdrop-filter: blur(18px) saturate(130%);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -132,6 +216,8 @@ a:hover {
 
 /* ===== 布局 ===== */
 .layout {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 48px;
@@ -150,6 +236,10 @@ a:hover {
 .highlight-card {
   display: block;
   border: 1px solid var(--border);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: 0 12px 36px rgba(120, 78, 34, 0.045);
   border-radius: 10px;
   padding: 20px;
   transition: all 0.2s ease;
@@ -412,6 +502,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: 0 12px 36px rgba(120, 78, 34, 0.04);
   border-radius: 10px;
   padding: 18px;
   transition: all 0.2s ease;
@@ -472,6 +566,10 @@ a:hover {
   display: flex;
   gap: 14px;
   border: 1px solid var(--border);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: 0 12px 36px rgba(120, 78, 34, 0.04);
   border-radius: 10px;
   padding: 18px;
   transition: all 0.2s ease;
@@ -668,9 +766,13 @@ a:hover {
 
 /* ===== 页脚 ===== */
 .footer {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--border);
   padding: 32px 0;
-  background: var(--bg);
+  background: var(--surface-strong);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  backdrop-filter: blur(18px) saturate(130%);
 }
 
 .footer-inner {
@@ -1074,9 +1176,28 @@ a:hover {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .aurora-backdrop::before,
+  .aurora-backdrop::after {
+    animation: none !important;
+  }
 }
 
 @media (max-width: 640px) {
+  .aurora-backdrop::before {
+    inset: -10%;
+    filter: blur(18px) saturate(120%);
+    opacity: 0.2;
+  }
+
+  .highlight-card,
+  .project-card,
+  .skill-card {
+    background: rgba(255, 255, 255, 0.84);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
   #projects-grid,
   .post-item {
     grid-template-columns: 1fr;
