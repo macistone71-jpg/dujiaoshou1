@@ -1,6 +1,6 @@
 // ============================================================
 //  网站基础配置
-//  文章内容在 posts1.js ~ posts6.js，项目内容在 projects1.js ~ projects3.js
+//  文章内容在 posts1.js ~ posts6.js，项目内容在 projects1.js ~ projects7.js
 // ============================================================
 window.SITE_CONFIG = {
   name: "何庆丰",
@@ -58,7 +58,7 @@ window.SITE_CONFIG = {
   // ---- 顶部高亮卡片 ----
   highlights: [
     { number: "11", title: "文章", desc: "个人网站 + 公众号内容", link: "#writing" },
-    { number: "4", title: "项目", desc: "做过的产品与案例", link: "#projects" },
+    { number: "7", title: "项目", desc: "做过的产品与案例", link: "#projects" },
     { number: "→", title: "关于", desc: "关于我和这个网站", link: "#about" },
   ],
 
