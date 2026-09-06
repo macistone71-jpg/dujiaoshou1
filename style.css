@@ -4,7 +4,7 @@
   --bg: #fdfdfd;
   --text: #222222;
   --text-muted: #595959;
-  --text-light: #666666;
+  --text-light: #595959;
   --accent: #d26911; /* 强调橙 */
   --border: rgba(132, 92, 53, 0.16);
   --surface: rgba(255, 255, 255, 0.72);
@@ -43,8 +43,12 @@ body {
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 88%, rgba(245, 158, 11, 0.1), transparent 34%),
+    radial-gradient(circle at 12% 88%, rgba(245, 158, 11, 0.18), transparent 34%),
+    radial-gradient(circle at 82% 70%, rgba(96, 165, 250, 0.12), transparent 32%),
     linear-gradient(145deg, #fffdf9 0%, #fbf8f3 48%, #f8fafc 100%);
+  background-position: 0 0, 0 0, 0 0;
+  background-size: 120% 120%, 125% 125%, 100% 100%;
+  animation: aurora-pan 16s ease-in-out infinite alternate;
 }
 
 .aurora-backdrop::before {
@@ -70,11 +74,11 @@ body {
     );
   background-position: 50% 50%, 50% 50%;
   background-size: 300% 200%, 220% 120%;
-  filter: blur(24px) saturate(125%);
-  opacity: 0.22;
+  filter: blur(22px) saturate(135%);
+  opacity: 0.38;
   mask-image: radial-gradient(ellipse at 92% 0%, #000 8%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at 92% 0%, #000 8%, transparent 70%);
-  animation: aurora-drift 60s linear infinite;
+  animation: aurora-drift 34s linear infinite;
   will-change: background-position;
 }
 
@@ -83,13 +87,22 @@ body {
   position: absolute;
   left: -16vw;
   bottom: -28vh;
-  width: 72vw;
-  height: 72vw;
+  width: 80vw;
+  height: 80vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 146, 60, 0.2) 0%, rgba(253, 186, 116, 0.08) 44%, transparent 70%);
-  filter: blur(20px);
-  animation: aurora-breathe 18s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.3) 0%, rgba(253, 186, 116, 0.12) 44%, transparent 70%);
+  filter: blur(18px);
+  animation: aurora-breathe 10s ease-in-out infinite alternate;
   will-change: transform, opacity;
+}
+
+@keyframes aurora-pan {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: -8vw -5vh, 7vw 6vh, 0 0;
+  }
 }
 
 @keyframes aurora-drift {
@@ -103,12 +116,12 @@ body {
 
 @keyframes aurora-breathe {
   from {
-    opacity: 0.55;
-    transform: translate3d(-3%, 2%, 0) scale(0.94);
+    opacity: 0.45;
+    transform: translate3d(-8%, 8%, 0) scale(0.88);
   }
   to {
     opacity: 1;
-    transform: translate3d(12%, -8%, 0) scale(1.08);
+    transform: translate3d(18%, -14%, 0) scale(1.14);
   }
 }
 
@@ -1177,6 +1190,7 @@ a:hover {
     transition-duration: 0.01ms !important;
   }
 
+  .aurora-backdrop,
   .aurora-backdrop::before,
   .aurora-backdrop::after {
     animation: none !important;
@@ -1186,8 +1200,8 @@ a:hover {
 @media (max-width: 640px) {
   .aurora-backdrop::before {
     inset: -10%;
-    filter: blur(18px) saturate(120%);
-    opacity: 0.2;
+    filter: blur(18px) saturate(130%);
+    opacity: 0.28;
   }
 
   .highlight-card,
