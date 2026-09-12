@@ -163,12 +163,12 @@ function renderProjects() {
       const isExternal = /^https?:\/\//i.test(p.link || "");
       const linkHtml = p.link
         ? `<a href="${escapeHtml(p.link)}"${isExternal ? ' target="_blank" rel="noopener"' : ""} class="project-link">查看 →</a>`
-        : `<span class="project-link" data-project="${i}">查看详情 →</span>`;
+        : p.detail ? `<span class="project-link" data-project="${i}">查看详情 →</span>` : "";
       const tagsHtml = (p.tags || [])
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
         .join("");
       return `
-      <div class="project-card" data-project="${i}">
+      <div class="project-card"${p.link || p.detail ? ` data-project="${i}"` : ""}>
         <div class="project-icon">${escapeHtml(p.icon || "📁")}</div>
         <h3>${escapeHtml(p.title)}</h3>
         <p>${escapeHtml(p.desc)}</p>
