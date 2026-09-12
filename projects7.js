@@ -1,9 +1,9 @@
-// 最新项目：Noobi.ai
+// 最新项目：Veyra
 window.PROJECTS = window.PROJECTS || [];
 window.PROJECTS.push({
   icon: "🎮",
-  title: "Noobi.ai｜基于 Codex App Server 的可信多智能体游戏生产系统设计与工程化",
-  desc: "把游戏创意转化为可玩的浏览器游戏工程，以规划、实现、独立审查、有界修复和宿主证明门禁保障生产过程可信。",
-  tags: ["多智能体", "Codex App Server", "游戏生产"],
-  link: "https://github.com/Innate-Labs/Noobi.ai",
+  title: "Veyra｜AI游戏创作工作台",
+  desc: "独立完成产品定义、交互设计与AI辅助开发，交付六阶段创作流程演示与可玩的 Canvas 小鲨鱼游戏。当前为 Web 交互原型，生成流程采用前端模拟，尚未接入真实模型生成服务。",
+  tags: ["AI 辅助开发", "交互原型", "可玩小游戏"],
+  link: "https://macistone71-jpg.github.io/Veyra/",
 });
