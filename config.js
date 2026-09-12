@@ -5,7 +5,7 @@
 window.SITE_CONFIG = {
   name: "何庆丰",
   slogan: "日拱一卒，功不唐捐",
-  role: "教育 AI · Agent 应用实践",
+  role: "产品经理 · 2 年经验",
   avatar: "https://avatars.githubusercontent.com/u/314186204?v=4", // 头像：GitHub 头像
   github: "macistone71-jpg",
   email: "macistone71@gmail.com",
@@ -50,16 +50,16 @@ window.SITE_CONFIG = {
 
   // ---- 关于我 ----
   about: [
-    "何庆丰，计算机科学与技术背景，具有高途集团 AI 产品经理工作经历。",
-    "专注教育 AI 与 Agent 应用，实践涵盖需求分析、工作流设计、Prompt 优化、评测与人机协作。",
-    "独立负责智备课、知测云的产品研究、方案设计与核心验证，并完成 Veyra 交互原型。",
+    "何庆丰，做了两年产品经理。",
+    "喜欢研究用户、拆解需求，把模糊的想法一步步做成能用的产品。",
+    "这个网站是自己搭的，用来记录这两年的产品思考、踩过的坑和学到的东西。",
   ],
 
   // ---- 顶部高亮卡片 ----
   highlights: [
     { number: "11", title: "文章", desc: "个人网站 + 公众号内容", link: "#writing" },
     { number: "7", title: "项目", desc: "做过的产品与案例", link: "#projects" },
-    { number: "→", title: "关于", desc: "经历、AI 实践与公开文章", link: "about.html" },
+    { number: "→", title: "关于", desc: "关于我和这个网站", link: "#about" },
   ],
 
   // ---- 分类 ----

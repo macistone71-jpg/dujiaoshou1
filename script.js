@@ -26,7 +26,7 @@ function setText(id, value) {
 }
 
 // ---- 基础信息 ----
-document.title = `${cfg.name || "个人网站"}｜教育 AI 与 Agent 应用实践`;
+document.title = `${cfg.name || "个人网站"} · ${cfg.slogan || ""}`.trim();
 setText("site-name", cfg.name);
 setText("site-slogan", cfg.slogan);
 setText("sidebar-name", cfg.name);
@@ -361,7 +361,7 @@ function closeModal({ restoreHash = true } = {}) {
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
   activePostIndex = null;
-  document.title = `${cfg.name || "个人网站"}｜教育 AI 与 Agent 应用实践`;
+  document.title = `${cfg.name || "个人网站"} · ${cfg.slogan || ""}`.trim();
   if (restoreHash && location.hash.startsWith("#post-")) {
     history.replaceState(null, "", modalReturnHash || "#writing");
   }
